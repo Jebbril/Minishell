@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:53:35 by orakib            #+#    #+#             */
-/*   Updated: 2023/03/16 16:43:57 by orakib           ###   ########.fr       */
+/*   Updated: 2023/04/10 14:24:07 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_lexer
 }	t_lexer;
 
 t_lexer	**tokenizer(char *input);
-t_lexer	*ft_newtnode(void);
+t_lexer	*ft_newtnode(char str, t_tokens token);
 void	ft_addtback(t_lexer **head, t_lexer *node);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:37:37 by orakib            #+#    #+#             */
-/*   Updated: 2023/03/15 16:52:05 by orakib           ###   ########.fr       */
+/*   Updated: 2023/04/10 14:23:32 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
 
-t_lexer	*ft_newtnode(void)
+t_lexer	*ft_newtnode(char str, t_tokens token)
 {
 	t_lexer	*new;
 
@@ -20,8 +20,8 @@ t_lexer	*ft_newtnode(void)
 	if (!new)
 		return (NULL);
 	new->index = -1;
-	new->token = -1;
-	new->str = NULL;
+	new->token = token;
+	new->str = str;
 	new->prev = NULL;
 	new->next = NULL;
 }
