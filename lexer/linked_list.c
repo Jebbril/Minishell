@@ -6,13 +6,13 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:37:37 by orakib            #+#    #+#             */
-/*   Updated: 2023/04/10 14:23:32 by orakib           ###   ########.fr       */
+/*   Updated: 2023/04/14 02:11:19 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lexer.h"
+#include "../include/lexer.h"
 
-t_lexer	*ft_newtnode(char str, t_tokens token)
+t_lexer	*ft_newtnode(char *str, t_tokens token)
 {
 	t_lexer	*new;
 
@@ -24,6 +24,7 @@ t_lexer	*ft_newtnode(char str, t_tokens token)
 	new->str = str;
 	new->prev = NULL;
 	new->next = NULL;
+	return (new);
 }
 
 void	ft_addtback(t_lexer **head, t_lexer *node)
@@ -33,7 +34,7 @@ void	ft_addtback(t_lexer **head, t_lexer *node)
 	tmp = *head;
 	if (tmp == NULL)
 	{
-		tmp = node;
+		*head = node;
 		node->index = 0;
 		return ;
 	}
@@ -42,4 +43,19 @@ void	ft_addtback(t_lexer **head, t_lexer *node)
 	tmp->next = node;
 	node->prev = tmp;
 	node->index = tmp->index + 1;
+}
+
+void	ft_deltall(t_lexer **thead)
+{
+	t_lexer	*tmp;
+
+	tmp = *thead;
+	while (tmp)
+	{
+		if (tmp->str)
+			free(tmp->str);
+		free(tmp);
+		tmp = tmp->next;
+	}
+	free(thead);
 }
