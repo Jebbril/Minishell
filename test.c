@@ -9,13 +9,14 @@ int	main(void)
 {
 	t_lexer **test;
 	t_lexer *tmp;
-	while (1)
-	{printf("%lu\n", strlen(readline("minishell> ")));}
-	test = tokenizer("      s     s");
+	// while (1)
+	// {printf("%lu\n", strlen(readline("minishell> ")));}
+	test = tokenizer("s ss    \"ss  ss ss  s");
 	tmp = *test;
 	while (tmp)
 	{
-		printf("%d\t%d\n", tmp->index, tmp->token);
+		printf("%d\t%s\t%d\n", tmp->index, tmp->str, tmp->token);
 		tmp = tmp->next;
 	}
+	// ft_deltall(test);
 }

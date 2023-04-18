@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:53:35 by orakib            #+#    #+#             */
-/*   Updated: 2023/04/14 02:30:19 by orakib           ###   ########.fr       */
+/*   Updated: 2023/04/18 15:15:47 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,12 @@ t_lexer	*ft_newtnode(char *str, t_tokens token);
 void	ft_addtback(t_lexer **head, t_lexer *node);
 void	ft_deltall(t_lexer **thead);
 int		ft_isspace(char c);
-void	handle_space(char *input, int *i, t_lexer **thead);
-void	handle_sep(char *input, int *i, t_lexer **thead);
+int		handle_space(char *input, int *i, t_lexer **thead);
+int		handle_sep(char *input, int *i, t_lexer **thead);
+int		handle_quote(char *input, int *i, t_lexer **thead);
+int		handle_dbquote(char *input, int *i, t_lexer **thead);
+int		handle_squote(char *input, int *i, t_lexer **thead);
+int		handle_word(char *input, int *i, t_lexer **thead);
+char	*ft_substr(char *s, unsigned int start, size_t len);
 
 #endif
