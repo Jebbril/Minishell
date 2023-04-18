@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:37:37 by orakib            #+#    #+#             */
-/*   Updated: 2023/04/14 02:11:19 by orakib           ###   ########.fr       */
+/*   Updated: 2023/04/18 21:39:11 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,16 @@ void	ft_addtback(t_lexer **head, t_lexer *node)
 void	ft_deltall(t_lexer **thead)
 {
 	t_lexer	*tmp;
+	t_lexer	*node;
 
 	tmp = *thead;
 	while (tmp)
 	{
 		if (tmp->str)
 			free(tmp->str);
-		free(tmp);
+		node = tmp;
 		tmp = tmp->next;
+		free(node);
 	}
 	free(thead);
 }
