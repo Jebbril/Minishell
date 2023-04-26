@@ -11,7 +11,8 @@ int	main(void)
 	t_lexer *tmp;
 	// while (1)
 	// {printf("%lu\n", strlen(readline("minishell> ")));}
-	test = tokenizer("s | < ><<>>ss    'ss'  ss ss  s");
+	printf("%s\n", getenv("PATH"));
+	test = tokenizer("ls -la | \'\'");
 	if (!test)
 	{
 		printf("error\n");
@@ -20,7 +21,24 @@ int	main(void)
 	tmp = *test;
 	while (tmp)
 	{
-		printf("%d\t%s\t%d\n", tmp->index, tmp->str, tmp->token);
+		if (tmp->token == word)
+			printf("%d\t%s\tWORD\n", tmp->index, tmp->str);
+		if (tmp->token == dbq_word)
+			printf("%d\t%s\tDBQ_WORD\n", tmp->index, tmp->str);
+		if (tmp->token == sq_word)
+			printf("%d\t%s\tSQ_WORD\n", tmp->index, tmp->str);
+		if (tmp->token == w_space)
+			printf("%d\t%s\tW_SPACE\n", tmp->index, tmp->str);
+		if (tmp->token == pipe)
+			printf("%d\t%s\tPIPE\n", tmp->index, tmp->str);
+		if (tmp->token == rd_input)
+			printf("%d\t%s\tRD_INPUT\n", tmp->index, tmp->str);
+		if (tmp->token == rd_output)
+			printf("%d\t%s\tRD_OUTPUT\n", tmp->index, tmp->str);
+		if (tmp->token == here_doc)
+			printf("%d\t%s\tHERE_DOC\n", tmp->index, tmp->str);
+		if (tmp->token == rd_output_apnd)
+			printf("%d\t%s\tRD_OUTPUT_APND\n", tmp->index, tmp->str);
 		tmp = tmp->next;
 	}
 	ft_deltall(test);

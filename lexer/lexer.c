@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:50:47 by orakib            #+#    #+#             */
-/*   Updated: 2023/04/18 21:02:19 by orakib           ###   ########.fr       */
+/*   Updated: 2023/04/26 14:37:30 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ t_lexer	**tokenizer(char *input)
 	t_lexer	**thead;
 	int		i;
 
-	if (!input || !input[0])
-		return (NULL);
 	thead = malloc(sizeof(t_lexer *));
 	if (!thead)
 		return (NULL);
 	*thead = NULL;
+	if (!input || !input[0])
+		return (thead);
 	i = 0;
 	if (handle_loop(input, &i, thead))
 	{
