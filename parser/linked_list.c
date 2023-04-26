@@ -6,13 +6,13 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:04:32 by orakib            #+#    #+#             */
-/*   Updated: 2023/04/26 14:47:42 by orakib           ###   ########.fr       */
+/*   Updated: 2023/04/26 17:26:11 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/parser.h"
 
-t_simple_cmd	*ft_newpnode()
+t_simple_cmd	*ft_newpnode(void)
 {
 	t_simple_cmd	*new;
 

@@ -41,5 +41,6 @@ int	main(void)
 			printf("%d\t%s\tRD_OUTPUT_APND\n", tmp->index, tmp->str);
 		tmp = tmp->next;
 	}
+	printf("%d\n", ft_lasttnode(test)->token);
 	ft_deltall(test);
 }
