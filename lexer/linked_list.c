@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:37:37 by orakib            #+#    #+#             */
-/*   Updated: 2023/04/26 17:46:09 by orakib           ###   ########.fr       */
+/*   Updated: 2023/04/27 16:54:47 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	ft_addtback(t_lexer **head, t_lexer *node)
 t_lexer	*ft_lasttnode(t_lexer **thead)
 {
 	t_lexer	*node;
+
 	node = *thead;
 	if (!node)
 		return (NULL);

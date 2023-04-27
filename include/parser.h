@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 08:50:24 by orakib            #+#    #+#             */
-/*   Updated: 2023/04/26 17:05:47 by orakib           ###   ########.fr       */
+/*   Updated: 2023/04/27 19:17:24 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,8 @@ typedef struct s_simple_cmd
 }	t_simple_cmd;
 
 t_simple_cmd	**parser(t_lexer **thead);
+int				pipe_errors(t_lexer *tnode);
+int				rd_errors(t_lexer *tnode);
+int				start_end_errors(t_lexer *tnode);
 
 #endif

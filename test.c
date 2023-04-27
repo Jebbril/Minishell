@@ -4,15 +4,21 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 #include "include/lexer.h"
-
+#include "include/parser.h"
+void leaks(){system("leaks a.out");}
 int	main(void)
 {
 	t_lexer **test;
 	t_lexer *tmp;
+	t_simple_cmd ** cmds;
+	char	*str;
+	printf("%s\n", getenv("PATH"));
 	// while (1)
 	// {printf("%lu\n", strlen(readline("minishell> ")));}
-	printf("%s\n", getenv("PATH"));
-	test = tokenizer("ls -la | \'\'");
+	while (1)
+	{
+	str = readline("minishell> ");
+	test = tokenizer(str);
 	if (!test)
 	{
 		printf("error\n");
@@ -41,6 +47,8 @@ int	main(void)
 			printf("%d\t%s\tRD_OUTPUT_APND\n", tmp->index, tmp->str);
 		tmp = tmp->next;
 	}
-	printf("%d\n", ft_lasttnode(test)->token);
+	// printf("%d\n", ft_lasttnode(test)->token);
+	cmds = parser(test);
 	ft_deltall(test);
+	}
 }
