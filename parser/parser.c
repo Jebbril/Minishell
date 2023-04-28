@@ -6,11 +6,21 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 09:01:14 by orakib            #+#    #+#             */
-/*   Updated: 2023/04/27 18:47:28 by orakib           ###   ########.fr       */
+/*   Updated: 2023/04/28 19:32:40 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/parser.h"
+
+void	create_commands(t_lexer **thead, t_simple_cmd **phead)
+{
+	t_lexer			*tnode;
+	// t_simple_cmd	*pnode;
+
+	tnode = *thead;
+	if (create_pnodes(thead, phead))
+		ft_delpall(phead);
+}
 
 int	syntax_errors(t_lexer **thead, t_simple_cmd **phead)
 {
@@ -43,19 +53,20 @@ t_simple_cmd	**parser(t_lexer **thead)
 
 	if (!thead)
 	{
-		printf("error during tokenization\n");
+		printf("Error during tokenization\n");
 		return (NULL);
 	}
+	if (thead == (t_lexer **)(1))
+		return (NULL);
 	phead = malloc(sizeof(t_simple_cmd *));
 	if (!phead)
 		return (NULL);
 	*phead = NULL;
-	if (*thead == NULL)
+	if (syntax_errors(thead, phead))
 	{
-		// free(thead);
+		printf("Syntax error\n");
 		return (phead);
 	}
-	if (syntax_errors(thead, phead))
-		return (phead);
+	create_commands(thead, phead);
 	return (phead);
 }

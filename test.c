@@ -10,7 +10,8 @@ int	main(void)
 {
 	t_lexer **test;
 	t_lexer *tmp;
-	t_simple_cmd ** cmds;
+	t_simple_cmd **cmds;
+	t_simple_cmd *ctmp;
 	char	*str;
 	printf("%s\n", getenv("PATH"));
 	// while (1)
@@ -19,11 +20,8 @@ int	main(void)
 	{
 	str = readline("minishell> ");
 	test = tokenizer(str);
-	if (!test)
+	if (test && test != (t_lexer **)(1))
 	{
-		printf("error\n");
-		return (0);
-	}
 	tmp = *test;
 	while (tmp)
 	{
@@ -47,8 +45,23 @@ int	main(void)
 			printf("%d\t%s\tRD_OUTPUT_APND\n", tmp->index, tmp->str);
 		tmp = tmp->next;
 	}
+	}
 	// printf("%d\n", ft_lasttnode(test)->token);
 	cmds = parser(test);
-	ft_deltall(test);
+	if (cmds)
+	{
+		ctmp = *cmds;
+		while (ctmp)
+		{
+			printf("Command number : %d\n", ctmp->index);
+			ctmp = ctmp->next;
+		}
+	}
+	if (cmds)
+		ft_delpall(cmds);
+	if (test && test != (t_lexer **)(1))
+		ft_deltall(test);
+	free(str);
+	// leaks();
 	}
 }

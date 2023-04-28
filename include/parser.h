@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 08:50:24 by orakib            #+#    #+#             */
-/*   Updated: 2023/04/27 19:17:24 by orakib           ###   ########.fr       */
+/*   Updated: 2023/04/28 17:47:48 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,9 @@ t_simple_cmd	**parser(t_lexer **thead);
 int				pipe_errors(t_lexer *tnode);
 int				rd_errors(t_lexer *tnode);
 int				start_end_errors(t_lexer *tnode);
+t_simple_cmd	*ft_newpnode(void);
+void			ft_addpback(t_simple_cmd **head, t_simple_cmd *node);
+void			ft_delpall(t_simple_cmd **phead);
+int				create_pnodes(t_lexer **thead, t_simple_cmd **phead);
 
 #endif

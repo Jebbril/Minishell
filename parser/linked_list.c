@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:04:32 by orakib            #+#    #+#             */
-/*   Updated: 2023/04/27 16:53:03 by orakib           ###   ########.fr       */
+/*   Updated: 2023/04/28 19:37:56 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,24 @@ void	ft_delpall(t_simple_cmd **phead)
 {
 	t_simple_cmd	*tmp;
 	t_simple_cmd	*node;
+	int				i;
 
 	tmp = *phead;
+	i = -1;
 	while (tmp)
 	{
+		if (tmp->cmd)
+		{
+			while (tmp->cmd[++i])
+				free(tmp->cmd[i]);
+			free(tmp->cmd);
+		}
+		if (tmp->builtin)
+			free(tmp->builtin);
+		if (tmp->redirections)
+			ft_deltall(tmp->redirections);
+		if (tmp->heredoc_file)
+			free(tmp->heredoc_file);
 		node = tmp;
 		tmp = tmp->next;
 		free(node);

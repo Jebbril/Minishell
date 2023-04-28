@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:27:01 by orakib            #+#    #+#             */
-/*   Updated: 2023/04/27 19:37:36 by orakib           ###   ########.fr       */
+/*   Updated: 2023/04/28 14:33:00 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	pipe_errors(t_lexer *tnode)
 		|| tmp->next->token == rd_output || tmp->next->token == here_doc
 		|| tmp->next->token == rd_output_apnd)
 		return (0);
-	printf("Syntax Error\n");
 	return (1);
 }
 
@@ -70,6 +69,5 @@ int	rd_errors(t_lexer *tnode)
 	if (tmp->next->token == word || tmp->next->token == dbq_word
 		|| tmp->next->token == sq_word)
 		return (0);
-	printf("Syntax Error\n");
 	return (1);
 }
