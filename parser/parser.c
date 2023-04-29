@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 09:01:14 by orakib            #+#    #+#             */
-/*   Updated: 2023/04/28 19:32:40 by orakib           ###   ########.fr       */
+/*   Updated: 2023/04/29 17:24:14 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,18 @@
 void	create_commands(t_lexer **thead, t_simple_cmd **phead)
 {
 	t_lexer			*tnode;
-	// t_simple_cmd	*pnode;
 
 	tnode = *thead;
 	if (create_pnodes(thead, phead))
+	{
 		ft_delpall(phead);
+		phead = NULL;
+	}
+	if (fill_pnodes(thead, phead))
+	{
+		ft_delpall(phead);
+		phead = NULL;
+	}
 }
 
 int	syntax_errors(t_lexer **thead, t_simple_cmd **phead)

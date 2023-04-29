@@ -13,7 +13,7 @@ int	main(void)
 	t_simple_cmd **cmds;
 	t_simple_cmd *ctmp;
 	char	*str;
-	printf("%s\n", getenv("PATH"));
+	// printf("%s\n", getenv("PATH"));
 	// while (1)
 	// {printf("%lu\n", strlen(readline("minishell> ")));}
 	while (1)
@@ -46,7 +46,6 @@ int	main(void)
 		tmp = tmp->next;
 	}
 	}
-	// printf("%d\n", ft_lasttnode(test)->token);
 	cmds = parser(test);
 	if (cmds)
 	{

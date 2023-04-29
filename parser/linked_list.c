@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:04:32 by orakib            #+#    #+#             */
-/*   Updated: 2023/04/28 19:37:56 by orakib           ###   ########.fr       */
+/*   Updated: 2023/04/29 15:54:01 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ t_simple_cmd	*ft_newpnode(void)
 		return (NULL);
 	new->index = -1;
 	new->cmd = NULL;
-	new->builtin = NULL;
 	new->redirections = NULL;
+	new->heredoc_file = NULL;
 	new->prev = NULL;
 	new->next = NULL;
 	return (new);
@@ -62,8 +62,6 @@ void	ft_delpall(t_simple_cmd **phead)
 				free(tmp->cmd[i]);
 			free(tmp->cmd);
 		}
-		if (tmp->builtin)
-			free(tmp->builtin);
 		if (tmp->redirections)
 			ft_deltall(tmp->redirections);
 		if (tmp->heredoc_file)
