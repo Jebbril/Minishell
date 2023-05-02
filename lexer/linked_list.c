@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:37:37 by orakib            #+#    #+#             */
-/*   Updated: 2023/04/27 16:54:47 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/02 16:56:07 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,26 @@ t_lexer	*ft_lasttnode(t_lexer **thead)
 	while (node->next)
 		node = node->next;
 	return (node);
+}
+
+void	ft_deltone(t_lexer **thead, t_lexer *tnode)
+{
+	if (!tnode)
+		return ;
+	if (!tnode->next && !tnode->prev)
+		*thead = NULL;
+	else
+	{
+		if (!tnode->prev)
+			*thead = tnode->next;
+		if (tnode->next)
+			tnode->next->prev = tnode->prev;
+		if (tnode->prev)
+			tnode->prev->next = tnode->next;
+	}
+	if (tnode->str)
+		free(tnode->str);
+	free(tnode);
 }
 
 void	ft_deltall(t_lexer **thead)

@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 09:01:14 by orakib            #+#    #+#             */
-/*   Updated: 2023/04/29 17:24:14 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/02 16:47:43 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,6 @@ void	create_commands(t_lexer **thead, t_simple_cmd **phead)
 
 	tnode = *thead;
 	if (create_pnodes(thead, phead))
-	{
-		ft_delpall(phead);
-		phead = NULL;
-	}
-	if (fill_pnodes(thead, phead))
 	{
 		ft_delpall(phead);
 		phead = NULL;
