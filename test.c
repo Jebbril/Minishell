@@ -12,6 +12,7 @@ int	main(void)
 	t_lexer *tmp;
 	t_simple_cmd **cmds;
 	t_simple_cmd *ctmp;
+	t_lexer	*rtmp;
 	char	*str;
 	// printf("%s\n", getenv("PATH"));
 	// while (1)
@@ -19,6 +20,7 @@ int	main(void)
 	while (1)
 	{
 	str = readline("minishell> ");
+	// str = "ls -la <f<<s >t | < f<<har cat >>here\"s\"";
 	test = tokenizer(str);
 	if (test && test != (t_lexer **)(1))
 	{
@@ -53,8 +55,37 @@ int	main(void)
 		while (ctmp)
 		{
 			printf("Command number : %d\n", ctmp->index);
+			rtmp = *(ctmp->redirections);
+			while (rtmp)
+			{
+				printf("rd type : %d\t %s\n", rtmp->token, rtmp->str);
+				rtmp = rtmp->next;
+			}
 			ctmp = ctmp->next;
 		}
+	}
+	tmp = *test;
+	while (tmp)
+	{
+		if (tmp->token == word)
+			printf("%d\t%s\tWORD\n", tmp->index, tmp->str);
+		if (tmp->token == dbq_word)
+			printf("%d\t%s\tDBQ_WORD\n", tmp->index, tmp->str);
+		if (tmp->token == sq_word)
+			printf("%d\t%s\tSQ_WORD\n", tmp->index, tmp->str);
+		if (tmp->token == w_space)
+			printf("%d\t%s\tW_SPACE\n", tmp->index, tmp->str);
+		if (tmp->token == pipe)
+			printf("%d\t%s\tPIPE\n", tmp->index, tmp->str);
+		if (tmp->token == rd_input)
+			printf("%d\t%s\tRD_INPUT\n", tmp->index, tmp->str);
+		if (tmp->token == rd_output)
+			printf("%d\t%s\tRD_OUTPUT\n", tmp->index, tmp->str);
+		if (tmp->token == here_doc)
+			printf("%d\t%s\tHERE_DOC\n", tmp->index, tmp->str);
+		if (tmp->token == rd_output_apnd)
+			printf("%d\t%s\tRD_OUTPUT_APND\n", tmp->index, tmp->str);
+		tmp = tmp->next;
 	}
 	if (cmds)
 		ft_delpall(cmds);
