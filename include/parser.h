@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 08:50:24 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/03 11:44:28 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/03 13:58:02 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void			ft_delpall(t_simple_cmd **phead);
 int				create_pnodes(t_lexer **thead, t_simple_cmd **phead);
 t_lexer			*ft_cpynode(t_lexer *tnode);
 int				get_rds(t_lexer **thead, t_simple_cmd **phead);
+int				get_cmds(t_lexer **thead, t_simple_cmd **phead);
 
 #endif

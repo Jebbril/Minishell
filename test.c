@@ -20,7 +20,7 @@ int	main(void)
 	while (1)
 	{
 	str = readline("minishell> ");
-	// str = "ls -la <f<<s >t | < f<<har cat >>here\"s\"";
+	// str = "ls | ls";
 	test = tokenizer(str);
 	if (test && test != (t_lexer **)(1))
 	{

@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:52:17 by orakib            #+#    #+#             */
-/*   Updated: 2023/04/18 21:04:33 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/04 14:21:00 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,15 @@ int	handle_dbquote(char *input, int *i, t_lexer **thead)
 				return (1);
 			j++;
 		}
+		j++;
 	}
-	str = ft_substr(input, (*i) + 1, (j - (*i) - 1));
+	str = ft_substr(input, (*i), (j - (*i)));
 	if (!str)
 		return (1);
 	node = ft_newtnode(str, dbq_word);
 	if (!node)
 		return (1);
-	(*i) += j - (*i) + 1;
+	(*i) += j - (*i);
 	ft_addtback(thead, node);
 	return (0);
 }
@@ -56,14 +57,15 @@ int	handle_squote(char *input, int *i, t_lexer **thead)
 				return (1);
 			j++;
 		}
+		j++;
 	}
-	str = ft_substr(input, (*i) + 1, (j - (*i) - 1));
+	str = ft_substr(input, (*i), (j - (*i)));
 	if (!str)
 		return (1);
 	node = ft_newtnode(str, sq_word);
 	if (!node)
 		return (1);
-	(*i) += j - (*i) + 1;
+	(*i) += j - (*i);
 	ft_addtback(thead, node);
 	return (0);
 }
