@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:37:37 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/02 20:32:21 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/05 17:43:05 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void	ft_deltall(t_lexer **thead)
 	t_lexer	*tmp;
 	t_lexer	*node;
 
+	if (thead == (t_lexer **)(1))
+		return ;
 	tmp = *thead;
 	while (tmp)
 	{

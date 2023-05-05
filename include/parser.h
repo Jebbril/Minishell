@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 08:50:24 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/03 13:58:02 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/05 15:36:29 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define PARSER_H
 
 # include "lexer.h"
+# include "envir.h"
 
 typedef struct s_simple_cmd
 {

@@ -5,6 +5,7 @@
 #include <readline/history.h>
 #include "include/lexer.h"
 #include "include/parser.h"
+#include "include/envir.h"
 void leaks(){system("leaks a.out");}
 int	main(void)
 {
