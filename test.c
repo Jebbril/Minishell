@@ -21,7 +21,7 @@ int	main(void)
 	while (1)
 	{
 	str = readline("minishell> ");
-	// str = "ls | ls";
+	// str = "ls -la | cat | grep";
 	test = tokenizer(str);
 	if (test && test != (t_lexer **)(1))
 	{
@@ -49,9 +49,10 @@ int	main(void)
 		tmp = tmp->next;
 	}
 	}
-	cmds = parser(test);
+	cmds = parser(test, NULL);
 	if (cmds)
 	{
+		int i = 0;
 		ctmp = *cmds;
 		while (ctmp)
 		{
@@ -62,6 +63,9 @@ int	main(void)
 				printf("rd type : %d\t %s\n", rtmp->token, rtmp->str);
 				rtmp = rtmp->next;
 			}
+			if (ctmp->cmd)
+				while (ctmp->cmd[i])
+					printf("cmd : %s\n", ctmp->cmd[i++]);
 			ctmp = ctmp->next;
 		}
 	}

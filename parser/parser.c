@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 09:01:14 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/04 15:48:25 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/06 19:34:06 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,11 @@ int	syntax_errors(t_lexer **thead, t_simple_cmd **phead)
 	return (0);
 }
 
-t_simple_cmd	**parser(t_lexer **thead)
+t_simple_cmd	**parser(t_lexer **thead, t_env **envar)
 {
 	t_simple_cmd	**phead;
 
+	(void)envar;
 	if (!thead)
 	{
 		printf("Error during tokenization\n");
@@ -75,5 +76,6 @@ t_simple_cmd	**parser(t_lexer **thead)
 		return (phead);
 	}
 	create_commands(thead, phead);
+	ft_expander(thead, phead, envar);
 	return (phead);
 }
