@@ -6,22 +6,27 @@
 #include "include/lexer.h"
 #include "include/parser.h"
 #include "include/envir.h"
+#include "include/minishell.h"
 void leaks(){system("leaks a.out");}
-int	main(void)
+int	main(int ac, char **av, char **env)
 {
 	t_lexer **test;
 	t_lexer *tmp;
+	t_env **envar;
 	t_simple_cmd **cmds;
 	t_simple_cmd *ctmp;
 	t_lexer	*rtmp;
 	char	*str;
+	(void)ac;
+	(void)av;
 	// printf("%s\n", getenv("PATH"));
 	// while (1)
 	// {printf("%lu\n", strlen(readline("minishell> ")));}
-	while (1)
-	{
-	str = readline("minishell> ");
-	// str = "ls -la | cat | grep";
+	// while (1)
+	// {
+	// str = readline("minishell> ");
+	str = "ss's'\"s\" ss 's'";
+	envar = get_envar(env);
 	test = tokenizer(str);
 	if (test && test != (t_lexer **)(1))
 	{
@@ -49,10 +54,10 @@ int	main(void)
 		tmp = tmp->next;
 	}
 	}
-	cmds = parser(test, NULL);
+	cmds = parser(test, envar);
+	concatenate(test, cmds);
 	if (cmds)
 	{
-		int i = 0;
 		ctmp = *cmds;
 		while (ctmp)
 		{
@@ -63,9 +68,6 @@ int	main(void)
 				printf("rd type : %d\t %s\n", rtmp->token, rtmp->str);
 				rtmp = rtmp->next;
 			}
-			if (ctmp->cmd)
-				while (ctmp->cmd[i])
-					printf("cmd : %s\n", ctmp->cmd[i++]);
 			ctmp = ctmp->next;
 		}
 	}
@@ -96,7 +98,8 @@ int	main(void)
 		ft_delpall(cmds);
 	if (test && test != (t_lexer **)(1))
 		ft_deltall(test);
-	free(str);
+	// free(str);
+	ft_delvall(envar);
 	// leaks();
-	}
+	// }
 }

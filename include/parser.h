@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 08:50:24 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/06 19:33:00 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/07 17:20:51 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int				create_pnodes(t_lexer **thead, t_simple_cmd **phead);
 t_lexer			*ft_cpynode(t_lexer *tnode);
 int				get_rds(t_lexer **thead, t_simple_cmd **phead);
 int				get_cmd(t_lexer **thead, t_simple_cmd **phead);
-int				ft_expander(t_lexer **thead, t_simple_cmd **phead, t_env **envar);
+int				ft_expander(t_lexer **thead, t_simple_cmd **phead,
+					t_env **envar);
+char			*ft_strchr(char *s, int c);
 
 #endif

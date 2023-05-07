@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:53:35 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/03 11:44:37 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/07 14:36:50 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ int		handle_dbquote(char *input, int *i, t_lexer **thead);
 int		handle_squote(char *input, int *i, t_lexer **thead);
 int		handle_word(char *input, int *i, t_lexer **thead);
 char	*ft_substr(char *s, unsigned int start, size_t len);
+char	*ft_strjoin(char *s1, char *s2);
+int		ft_strncmp(char *s1, char *s2, int n);
 
 #endif

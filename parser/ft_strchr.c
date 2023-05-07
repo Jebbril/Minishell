@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 16:31:47 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/07 19:34:07 by orakib           ###   ########.fr       */
+/*   Created: 2023/05/07 17:20:22 by orakib            #+#    #+#             */
+/*   Updated: 2023/05/07 17:20:35 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
+#include "../include/parser.h"
 
-# define MINISHELL_H
+char	*ft_strchr(char *s, int c)
+{
+	int	i;
 
-# include "parser.h"
-# include <readline/readline.h>
-# include <readline/history.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-
-void	concatenate(t_lexer **thead, t_simple_cmd ** phead);
-
-#endif
+	i = 0;
+	if (!s)
+		return (NULL);
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return ((char *)s + i);
+		i++;
+	}
+	if (c == '\0')
+		return ((char *)s + i);
+	return (NULL);
+}
