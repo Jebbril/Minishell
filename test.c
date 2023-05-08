@@ -25,7 +25,7 @@ int	main(int ac, char **av, char **env)
 	// while (1)
 	// {
 	// str = readline("minishell> ");
-	str = "ss's'\"s\" ss 's'";
+	str = "\"ss$USER+ss$HOME+ttt \" 's'\"s\" ss 's'";
 	envar = get_envar(env);
 	test = tokenizer(str);
 	if (test && test != (t_lexer **)(1))
@@ -55,7 +55,6 @@ int	main(int ac, char **av, char **env)
 	}
 	}
 	cmds = parser(test, envar);
-	concatenate(test, cmds);
 	if (cmds)
 	{
 		ctmp = *cmds;

@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 08:50:24 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/07 17:20:51 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/08 17:04:43 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ int				get_cmd(t_lexer **thead, t_simple_cmd **phead);
 int				ft_expander(t_lexer **thead, t_simple_cmd **phead,
 					t_env **envar);
 char			*ft_strchr(char *s, int c);
+int				ft_isalpha(int c);
+int				ft_isalnum(int c);
 
 #endif
