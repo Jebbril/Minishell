@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:31:47 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/08 17:00:32 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/09 14:09:16 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include "concat.h"
 
 #endif

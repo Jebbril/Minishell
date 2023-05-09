@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:04:32 by orakib            #+#    #+#             */
-/*   Updated: 2023/04/29 15:54:01 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/09 17:59:17 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	ft_delpall(t_simple_cmd **phead)
 		node = tmp;
 		tmp = tmp->next;
 		free(node);
+		i = -1;
 	}
 	free(phead);
 }

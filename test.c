@@ -22,10 +22,10 @@ int	main(int ac, char **av, char **env)
 	// printf("%s\n", getenv("PATH"));
 	// while (1)
 	// {printf("%lu\n", strlen(readline("minishell> ")));}
-	while (1)
-	{
-	str = readline("minishell> ");
-	// str = "\"ss$USER+ss$HOME+ttt \" 's'\"s\" ss 's'";
+	// while (1)
+	// {
+	// str = readline("minishell> ");
+	str = "ls la | -la";
 	envar = get_envar(env);
 	test = tokenizer(str);
 	if (test && test != (t_lexer **)(1))
@@ -55,6 +55,7 @@ int	main(int ac, char **av, char **env)
 	}
 	}
 	cmds = parser(test, envar);
+	concatenate(test, cmds);
 	if (cmds)
 	{
 		ctmp = *cmds;
@@ -66,6 +67,12 @@ int	main(int ac, char **av, char **env)
 			{
 				printf("rd type : %d\t %s\n", rtmp->token, rtmp->str);
 				rtmp = rtmp->next;
+			}
+			int i = 0;
+			while(ctmp->cmd[i])
+			{
+				printf("command : %s\n", ctmp->cmd[i]);
+				i++;
 			}
 			ctmp = ctmp->next;
 		}
@@ -97,8 +104,8 @@ int	main(int ac, char **av, char **env)
 		ft_delpall(cmds);
 	if (test && test != (t_lexer **)(1))
 		ft_deltall(test);
-	free(str);
+	// free(str);
 	ft_delvall(envar);
 	// leaks();
-	}
+	// }
 }

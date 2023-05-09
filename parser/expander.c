@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:25:03 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/08 18:35:26 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/09 16:23:52 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ void	keytovalue(t_lexer *tnode, t_env **envar, int i, int j)
 		vnode = vnode->next;
 	}
 	join_all(before, after, value, tnode);
+	free(var);
+	free(before);
+	free(after);
 }
 
 int	ft_expand(t_lexer *tnode, t_env **envar)
@@ -61,6 +64,7 @@ int	ft_expand(t_lexer *tnode, t_env **envar)
 				while (tnode->str[i] == '_' || ft_isalnum(tnode->str[i]))
 					i++;
 				keytovalue(tnode, envar, i, j);
+				i = j - 1;
 			}
 		}
 	}

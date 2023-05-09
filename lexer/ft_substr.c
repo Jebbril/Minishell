@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 12:59:02 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/07 14:37:01 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/09 15:36:40 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,22 +84,18 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		j;
 	char	*str;
 
-	i = 0;
-	j = 0;
+	i = -1;
+	j = -1;
 	if (!s1 || !s2)
 		return (NULL);
 	str = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
-	while (s1[i])
-	{
+	while (s1[++i])
 		str[i] = s1[i];
-		i++;
-	}
-	while (s2[j])
+	while (s2[++j])
 	{
 		str[i] = s2[j];
-		j++;
 		i++;
 	}
 	str[i] = 0;
