@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:27:49 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/06 15:16:33 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/09 18:16:50 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int ac, char **av, char **env)
 		add_history(str);
 		tokens = tokenizer(str);
 		commands = parser(tokens, envar);
+		concatenate(tokens, commands);
 		if (tokens)
 			ft_deltall(tokens);
 		if (commands)
