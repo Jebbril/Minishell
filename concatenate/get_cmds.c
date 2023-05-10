@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 16:33:41 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/09 18:12:19 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/10 17:14:18 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	get_cmds22(t_lexer **tnode, t_simple_cmd **pnode, int i)
 			(*tnode) = (*tnode)->next;
 			i = 0;
 		}
-		if ((*tnode))
+		else if ((*tnode))
 			(*tnode) = (*tnode)->next;
 	}
 }
@@ -67,7 +67,7 @@ int	get_cmds12(t_lexer **tnode, t_simple_cmd **pnode, int i)
 			(*tnode) = (*tnode)->next;
 			i = 0;
 		}
-		if ((*tnode))
+		else if ((*tnode))
 			(*tnode) = (*tnode)->next;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 19:32:52 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/09 18:00:27 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/10 17:02:15 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ int	concatenate(t_lexer **thead, t_simple_cmd **phead)
 	t_simple_cmd	*pnode;
 	t_lexer			*tnode;
 
+	if (!phead)
+		return (0);
 	tnode = *thead;
 	pnode = *phead;
 	while (tnode)
@@ -105,7 +107,6 @@ int	concatenate(t_lexer **thead, t_simple_cmd **phead)
 		tnode = tnode->next;
 	}
 	concat_rd(pnode);
-	if (get_cmds(thead, phead))
-		return (1);
+	get_cmds(thead, phead);
 	return (0);
 }
