@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 16:31:47 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/11 17:12:25 by orakib           ###   ########.fr       */
+/*   Created: 2023/05/11 17:05:09 by orakib            #+#    #+#             */
+/*   Updated: 2023/05/11 17:11:36 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
+#ifndef BUILTINS_H
 
-# define MINISHELL_H
+# define BUILTINS_H
 
-# include "parser.h"
-# include <readline/readline.h>
-# include <readline/history.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include "concat.h"
-# include "builtins.h"
+# include "minishell.h"
+
+int	m_env(t_env **envar);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:04:33 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/05 17:02:56 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/11 18:51:52 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_env	*ft_newvnode(char *key, char *value)
 		return (NULL);
 	node->key = key;
 	node->value = value;
+	node->printed = 0;
 	node->next = NULL;
 	node->prev = NULL;
 	return (node);

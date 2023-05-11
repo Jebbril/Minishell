@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:27:49 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/10 16:57:11 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/11 17:57:22 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int ac, char **av, char **env)
 	(void)ac;
 	(void)av;
 	envar = get_envar(env);
+	ft_addvback(envar, ft_newvnode("gg", NULL));
 	while (1)
 	{
 		str = readline("Minishell >");
@@ -29,6 +30,7 @@ int	main(int ac, char **av, char **env)
 		tokens = tokenizer(str);
 		commands = parser(tokens, envar);
 		concatenate(tokens, commands);
+		m_env(envar);
 		if (tokens)
 			ft_deltall(tokens);
 		if (commands)

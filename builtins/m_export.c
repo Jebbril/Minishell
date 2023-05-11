@@ -1,26 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   m_export.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 16:31:47 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/11 17:12:25 by orakib           ###   ########.fr       */
+/*   Created: 2023/05/11 17:19:38 by orakib            #+#    #+#             */
+/*   Updated: 2023/05/11 18:53:33 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
+#include "../include/builtins.h"
 
-# define MINISHELL_H
+void	exp_print(t_env **envar)
+{
+	t_env	*vnode;
+	t_env	*tmp;
 
-# include "parser.h"
-# include <readline/readline.h>
-# include <readline/history.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include "concat.h"
-# include "builtins.h"
+	vnode = *envar;
+	while (vnode)
+	{
+		tmp = *envar;
+		while (tmp)
+		{
+			if (ft_strncmp(tmp->key, ))
+			tmp = tmp->next
+		}
+		vnode = vnode->next;
+	}
+}
 
-#endif
+int	m_export(char **args, t_env **envar)
+{
+	t_env	*vnode;
+
+	vnode = *envar;
+	if (!args[1])
+	{
+		exp_print(envar);
+		return (EXIT_SUCCESS);
+	}	
+}

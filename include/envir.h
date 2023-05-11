@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 18:15:00 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/05 17:02:59 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/11 18:51:28 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_env
 {
 	char			*key;
 	char			*value;
+	int				printed;
 	struct s_env	*next;
 	struct s_env	*prev;
 }	t_env;
