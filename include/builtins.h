@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:05:09 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/11 17:11:36 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/14 16:27:09 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 
 # include "minishell.h"
 
-int	m_env(t_env **envar);
+int		m_env(t_env **envar);
+int		m_export(char **args, t_env **envar);
+int		exp_k(char *arg, t_env **envar);
+int		exp_knv(char *arg, t_env **envar);
+void	exp_print(t_env **envar);
 
 #endif

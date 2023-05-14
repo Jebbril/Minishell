@@ -22,10 +22,11 @@ int	main(int ac, char **av, char **env)
 	// printf("%s\n", getenv("PATH"));
 	// while (1)
 	// {printf("%lu\n", strlen(readline("minishell> ")));}
-	// while (1)
-	// {
-	// str = readline("minishell> ");
-	str = "cat test| mm test|ls";
+	while (1)
+	{
+	str = readline("minishell> ");
+	add_history(str);
+	// str = "cat test| mm test|ls";
 	envar = get_envar(env);
 	test = tokenizer(str);
 	if (test && test != (t_lexer **)(1))
@@ -104,8 +105,8 @@ int	main(int ac, char **av, char **env)
 		ft_delpall(cmds);
 	if (test && test != (t_lexer **)(1))
 		ft_deltall(test);
-	// free(str);
+	free(str);
 	ft_delvall(envar);
 	// leaks();
-	// }
+	}
 }
