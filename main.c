@@ -6,11 +6,12 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:27:49 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/14 18:04:07 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/15 16:20:18 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/minishell.h"
+#include "mlx.h"
 
 int	main(int ac, char **av, char **env)
 {
@@ -22,21 +23,22 @@ int	main(int ac, char **av, char **env)
 	(void)ac;
 	(void)av;
 	envar = get_envar(env);
-	// while (1)
-	// {
-	// 	str = readline("Minishell >");
-	// 	add_history(str);
-		str = "export xxx+x=test";
+	while (1)
+	{
+		str = readline("Minishell >");
+		add_history(str);
 		tokens = tokenizer(str);
 		commands = parser(tokens, envar);
 		concatenate(tokens, commands);
 		m_export((*commands)->cmd, envar);
 		exp_print(envar);
+		m_unset((*commands)->next->cmd, envar);
+		exp_print(envar);
 		if (tokens)
 			ft_deltall(tokens);
 		if (commands)
 			ft_delpall(commands);
-		// free(str);
-	// }
+		free(str);
+	}
 	ft_delvall(envar);
 }

@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 18:15:00 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/11 18:51:28 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/15 15:53:55 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ t_env	**get_envar(char **env);
 t_env	*ft_newvnode(char *key, char *value);
 void	ft_addvback(t_env **vhead, t_env *vnode);
 void	ft_delvall(t_env **vhead);
+void	ft_delvone(t_env **vhead, t_env *vnode);
 
 #endif

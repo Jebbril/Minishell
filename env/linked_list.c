@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:04:33 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/11 18:51:52 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/15 15:53:14 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,28 @@ void	ft_addvback(t_env **vhead, t_env *vnode)
 		tmp = tmp->next;
 	tmp->next = vnode;
 	vnode->prev = tmp;
+}
+
+void	ft_delvone(t_env **vhead, t_env *vnode)
+{
+	if (!vnode)
+		return ;
+	if (!vnode->next && !vnode->prev)
+		*vhead = NULL;
+	else
+	{
+		if (!vnode->prev)
+			*vhead = vnode->next;
+		if (vnode->next)
+			vnode->next->prev = vnode->prev;
+		if (vnode->prev)
+			vnode->prev->next = vnode->next;
+	}
+	if (vnode->key)
+		free(vnode->key);
+	if (vnode->value)
+		free(vnode->value);
+	free(vnode);
 }
 
 void	ft_delvall(t_env **vhead)
