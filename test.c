@@ -26,7 +26,7 @@ int	main(int ac, char **av, char **env)
 	{
 	str = readline("minishell> ");
 	add_history(str);
-	// str = "cat test| mm test|ls";
+	// str = "<< ''";
 	envar = get_envar(env);
 	test = tokenizer(str);
 	if (test && test != (t_lexer **)(1))
@@ -70,6 +70,11 @@ int	main(int ac, char **av, char **env)
 				rtmp = rtmp->next;
 			}
 			int i = 0;
+			if (!ctmp->cmd)
+			{
+				ctmp = ctmp->next;
+				continue ;
+			}
 			while(ctmp->cmd[i])
 			{
 				printf("command : %s\n", ctmp->cmd[i]);

@@ -6,12 +6,11 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:27:49 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/15 16:20:18 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/17 13:22:22 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/minishell.h"
-#include "mlx.h"
 
 int	main(int ac, char **av, char **env)
 {
@@ -29,11 +28,7 @@ int	main(int ac, char **av, char **env)
 		add_history(str);
 		tokens = tokenizer(str);
 		commands = parser(tokens, envar);
-		concatenate(tokens, commands);
-		m_export((*commands)->cmd, envar);
-		exp_print(envar);
-		m_unset((*commands)->next->cmd, envar);
-		exp_print(envar);
+		// concatenate(tokens, commands);
 		if (tokens)
 			ft_deltall(tokens);
 		if (commands)
