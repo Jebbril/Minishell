@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 16:33:41 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/17 13:33:43 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/19 15:49:54 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	get_cmds22(t_lexer **tnode, t_simple_cmd **pnode, int i)
 			(*tnode)->str = NULL;
 			i++;
 		}
-		if ((*tnode)->token == pipe || (*tnode)->next == NULL)
+		if ((*tnode)->token == is_pipe || (*tnode)->next == NULL)
 		{
 			(*pnode) = (*pnode)->next;
 			(*tnode) = (*tnode)->next;
@@ -59,7 +59,7 @@ int	get_cmds12(t_lexer **tnode, t_simple_cmd **pnode, int i)
 		if ((*tnode)->token == word || (*tnode)->token == sq_word
 			|| (*tnode)->token == dbq_word)
 			i++;
-		if ((*tnode)->token == pipe || (*tnode)->next == NULL)
+		if ((*tnode)->token == is_pipe || (*tnode)->next == NULL)
 		{
 			(*pnode)->cmd = malloc(sizeof(char *) * (i + 1));
 			if (!(*pnode)->cmd)

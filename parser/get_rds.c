@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 17:48:50 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/03 13:25:46 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/19 15:50:18 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	get_rds2(t_lexer *tnode, t_simple_cmd *pnode, t_lexer **thead)
 		}
 		if (!tnode)
 			break ;
-		if (tnode->token == pipe)
+		if (tnode->token == is_pipe)
 			pnode = pnode->next;
 		if (tnode->token != rd_output_apnd && tnode->token != here_doc
 			&& tnode->token != rd_input && tnode->token != rd_output)

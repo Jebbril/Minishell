@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:33:31 by orakib            #+#    #+#             */
-/*   Updated: 2023/04/18 14:48:31 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/19 15:50:05 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	handle_sep(char *input, int *i, t_lexer **thead)
 
 	node = NULL;
 	if (input[*i] == '|')
-		node = ft_newtnode(NULL, pipe);
+		node = ft_newtnode(NULL, is_pipe);
 	else if (input[*i] == '<')
 	{
 		if (input[*i + 1] == '<')

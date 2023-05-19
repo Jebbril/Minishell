@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:53:35 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/07 14:36:50 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/19 15:48:16 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef enum s_tokens
 	dbq_word,
 	sq_word,
 	w_space,
-	pipe,
+	is_pipe,
 	rd_input,
 	rd_output,
 	here_doc,

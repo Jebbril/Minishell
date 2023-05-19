@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:27:01 by orakib            #+#    #+#             */
-/*   Updated: 2023/04/28 14:33:00 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/19 17:25:44 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int	start_end_errors(t_lexer *tnode)
 	t_lexer	*tmp;
 
 	tmp = tnode;
-	if (tmp->token == rd_input || tmp->token == rd_output || tmp->token == pipe
+	if (tmp->token == rd_input || tmp->token == rd_output
+		|| tmp->token == is_pipe
 		|| tmp->token == here_doc || tmp->token == rd_output_apnd)
 	{
 		if (tmp->next)
@@ -27,7 +28,7 @@ int	start_end_errors(t_lexer *tnode)
 			return (1);
 	}
 	tmp = tnode;
-	if (tmp->token == pipe)
+	if (tmp->token == is_pipe)
 	{
 		if (tmp->prev)
 			if (tmp->prev->token == w_space)

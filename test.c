@@ -42,7 +42,7 @@ int	main(int ac, char **av, char **env)
 			printf("%d\t%s\tSQ_WORD\n", tmp->index, tmp->str);
 		if (tmp->token == w_space)
 			printf("%d\t%s\tW_SPACE\n", tmp->index, tmp->str);
-		if (tmp->token == pipe)
+		if (tmp->token == is_pipe)
 			printf("%d\t%s\tPIPE\n", tmp->index, tmp->str);
 		if (tmp->token == rd_input)
 			printf("%d\t%s\tRD_INPUT\n", tmp->index, tmp->str);
@@ -57,6 +57,7 @@ int	main(int ac, char **av, char **env)
 	}
 	cmds = parser(test, envar);
 	concatenate(test, cmds);
+	get_heredocs(cmds);
 	if (cmds)
 	{
 		ctmp = *cmds;

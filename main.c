@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:27:49 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/17 13:22:22 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/19 18:22:54 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ int	main(int ac, char **av, char **env)
 	{
 		str = readline("Minishell >");
 		add_history(str);
+		// str = "ss << here";
 		tokens = tokenizer(str);
 		commands = parser(tokens, envar);
-		// concatenate(tokens, commands);
+		concatenate(tokens, commands);
+		get_heredocs(commands);
 		if (tokens)
 			ft_deltall(tokens);
 		if (commands)
