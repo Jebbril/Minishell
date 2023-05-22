@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   concat.h                                           :+:      :+:    :+:   */
+/*   open_fds.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/08 19:55:05 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/22 17:49:04 by orakib           ###   ########.fr       */
+/*   Created: 2023/05/22 17:15:29 by orakib            #+#    #+#             */
+/*   Updated: 2023/05/22 17:17:28 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONCAT_H
+#include "../include/minishell.h"
 
-# define CONCAT_H
+int	open_fds(t_simple_cmd **cmds)
+{
+	t_simple_cmd	*pnode;
 
-# include "parser.h"
-
-int	concatenate(t_lexer **thead, t_simple_cmd **phead);
-int	get_cmds(t_lexer **thead, t_simple_cmd **phead);
-int	ft_expand(t_lexer *tnode, t_env **envar);
-
-#endif
+	pnode = *cmds;
+	while (pnode)
+	{
+		
+		pnode = pnode->next;
+	}
+}
