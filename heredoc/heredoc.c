@@ -6,13 +6,13 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 12:49:37 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/22 17:53:23 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/24 09:52:52 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	open_heredoc2(char *filename, char *number, t_lexer *tnode, int fd)
+void	open_heredoc2(char *filename, t_env **envar, t_lexer *tnode, int fd)
 {
 	char	*input;
 
@@ -26,17 +26,18 @@ void	open_heredoc2(char *filename, char *number, t_lexer *tnode, int fd)
 			free(input);
 			break ;
 		}
+		if (tnode->token == word)
+			expand_heredoc(&input, envar);
 		write(fd, input, ft_strlen(input));
 		write(fd, "\n", 1);
 		free(input);
 	}
-	free(number);
 	free(tnode->str);
 	tnode->str = filename;
 	close(fd);
 }
 
-int	open_heredoc(t_lexer *tnode, int *i)
+int	open_heredoc(t_lexer *tnode, int *i, t_env **envar)
 {
 	char	*filename;
 	char	*number;
@@ -58,11 +59,12 @@ int	open_heredoc(t_lexer *tnode, int *i)
 	fd = open(filename, O_RDWR | O_CREAT);
 	if (fd == -1)
 		return (free(filename), free(number), EXIT_FAILURE);
-	open_heredoc2(filename, number, tnode, fd);
+	open_heredoc2(filename, envar, tnode, fd);
+	free(number);
 	return (EXIT_SUCCESS);
 }
 
-int	nodes_loop(t_simple_cmd *pnode, int *i)
+int	nodes_loop(t_simple_cmd *pnode, int *i, t_env **envar)
 {
 	t_lexer	*tnode;
 
@@ -74,7 +76,7 @@ int	nodes_loop(t_simple_cmd *pnode, int *i)
 			tnode = tnode->next;
 			if (tnode->token == w_space)
 				tnode = tnode->next;
-			if (open_heredoc(tnode, i))
+			if (open_heredoc(tnode, i, envar))
 				return (EXIT_FAILURE);
 		}
 		tnode = tnode->next;
@@ -82,7 +84,7 @@ int	nodes_loop(t_simple_cmd *pnode, int *i)
 	return (EXIT_SUCCESS);
 }
 
-int	get_heredocs(t_simple_cmd **cmds)
+int	get_heredocs(t_simple_cmd **cmds, t_env **envar)
 {
 	t_simple_cmd	*pnode;
 	int				i;
@@ -93,7 +95,7 @@ int	get_heredocs(t_simple_cmd **cmds)
 	i = 1000000;
 	while (pnode)
 	{
-		if (nodes_loop(pnode, &i))
+		if (nodes_loop(pnode, &i, envar))
 			return (EXIT_FAILURE);
 		pnode = pnode->next;
 	}

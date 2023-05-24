@@ -57,7 +57,7 @@ int	main(int ac, char **av, char **env)
 	}
 	cmds = parser(test, envar);
 	concatenate(test, cmds);
-	get_heredocs(cmds);
+	get_heredocs(cmds, envar);
 	if (cmds)
 	{
 		ctmp = *cmds;

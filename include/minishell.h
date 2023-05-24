@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:31:47 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/19 15:49:00 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/24 11:46:06 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include "builtins.h"
 
 char	*ft_itoa(int n);
-int		get_heredocs(t_simple_cmd **cmds);
+int		get_heredocs(t_simple_cmd **cmds, t_env **envar);
+void	expand_heredoc(char **input, t_env **envar);
 
 #endif

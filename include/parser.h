@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 08:50:24 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/08 17:04:43 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/24 10:02:08 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ typedef struct s_simple_cmd
 	int					index;
 	char				**cmd;
 	t_lexer				**redirections;
-	char				*heredoc_file;
+	int					infd;
+	int					outfd;
 	struct s_simple_cmd	*prev;
 	struct s_simple_cmd	*next;
 }	t_simple_cmd;

@@ -1,0 +1,13 @@
+a.out
+a.out.dSYM
+builtins
+concatenate
+env
+f
+file_descriptors
+heredoc
+include
+lexer
+main.c
+parser
+test.c
