@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:53:35 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/19 15:48:16 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/29 16:46:42 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ typedef struct s_lexer
 	struct s_lexer	*next;
 	struct s_lexer	*prev;
 }	t_lexer;
+
+typedef struct s_global
+{
+	int	exit_code;
+}	t_global;
 
 int		ft_strlen(char *s);
 size_t	ft_strlcpy(char *dst, char *src, size_t dstsize);

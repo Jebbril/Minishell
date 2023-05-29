@@ -8,6 +8,8 @@
 #include "include/envir.h"
 #include "include/minishell.h"
 void leaks(){system("leaks a.out");}
+
+t_global	g_var;
 int	main(int ac, char **av, char **env)
 {
 	t_lexer **test;
@@ -55,7 +57,7 @@ int	main(int ac, char **av, char **env)
 		tmp = tmp->next;
 	}
 	}
-	cmds = parser(test, envar);
+	cmds = parser(test, envar, &g_var);
 	concatenate(test, cmds);
 	get_heredocs(cmds, envar);
 	if (cmds)
@@ -95,7 +97,7 @@ int	main(int ac, char **av, char **env)
 	// 		printf("%d\t%s\tSQ_WORD\n", tmp->index, tmp->str);
 	// 	if (tmp->token == w_space)
 	// 		printf("%d\t%s\tW_SPACE\n", tmp->index, tmp->str);
-	// 	if (tmp->token == pipe)
+	// 	if (tmp->token == is_pipe)
 	// 		printf("%d\t%s\tPIPE\n", tmp->index, tmp->str);
 	// 	if (tmp->token == rd_input)
 	// 		printf("%d\t%s\tRD_INPUT\n", tmp->index, tmp->str);

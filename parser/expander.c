@@ -6,11 +6,12 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:25:03 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/09 16:23:52 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/29 17:28:38 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/parser.h"
+#include "../include/minishell.h"
 
 void	join_all(char *before, char *after, char *value, t_lexer *tnode)
 {
@@ -48,7 +49,7 @@ void	keytovalue(t_lexer *tnode, t_env **envar, int i, int j)
 	free(after);
 }
 
-int	ft_expand(t_lexer *tnode, t_env **envar)
+int	ft_expand(t_lexer *tnode, t_env **envar, t_global *g_var)
 {
 	int	i;
 	int	j;
@@ -58,7 +59,10 @@ int	ft_expand(t_lexer *tnode, t_env **envar)
 	{
 		if (tnode->str[i] == '$')
 		{
-			if (tnode->str[i + 1] == '_' || ft_isalpha(tnode->str[i + 1]))
+			if (tnode->str[i + 1] == '?')
+				expand_exitc(tnode, g_var, i);
+			
+			else if (tnode->str[i + 1] == '_' || ft_isalpha(tnode->str[i + 1]))
 			{
 				j = i++;
 				while (tnode->str[i] == '_' || ft_isalnum(tnode->str[i]))
@@ -71,7 +75,7 @@ int	ft_expand(t_lexer *tnode, t_env **envar)
 	return (0);
 }
 
-int	ft_expander2(t_simple_cmd *pnode, t_env **envar)
+int	ft_expander2(t_simple_cmd *pnode, t_env **envar, t_global *g_var)
 {
 	t_lexer			*tnode;
 
@@ -90,14 +94,15 @@ int	ft_expander2(t_simple_cmd *pnode, t_env **envar)
 		if (!tnode)
 			break ;
 		if (tnode->token == word || tnode->token == dbq_word)
-			if (ft_expand(tnode, envar))
+			if (ft_expand(tnode, envar, g_var))
 				return (1);
 		tnode = tnode->next;
 	}
 	return (0);
 }
 
-int	ft_expander(t_lexer **thead, t_simple_cmd **phead, t_env **envar)
+int	ft_expander(t_lexer **thead, t_simple_cmd **phead, t_env **envar
+	, t_global *g_var)
 {
 	t_simple_cmd	*pnode;
 	t_lexer			*tnode;
@@ -107,13 +112,13 @@ int	ft_expander(t_lexer **thead, t_simple_cmd **phead, t_env **envar)
 	while (tnode)
 	{
 		if (tnode->token == word || tnode->token == dbq_word)
-			if (ft_expand(tnode, envar))
+			if (ft_expand(tnode, envar, g_var))
 				return (1);
 		tnode = tnode->next;
 	}
 	while (pnode)
 	{
-		if (ft_expander2(pnode, envar))
+		if (ft_expander2(pnode, envar, g_var))
 			return (1);
 		pnode = pnode->next;
 	}

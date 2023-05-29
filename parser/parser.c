@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 09:01:14 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/19 15:50:50 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/29 16:48:22 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	syntax_errors(t_lexer **thead, t_simple_cmd **phead)
 	return (0);
 }
 
-t_simple_cmd	**parser(t_lexer **thead, t_env **envar)
+t_simple_cmd	**parser(t_lexer **thead, t_env **envar, t_global *g_var)
 {
 	t_simple_cmd	**phead;
 
@@ -76,6 +76,6 @@ t_simple_cmd	**parser(t_lexer **thead, t_env **envar)
 		return (phead);
 	}
 	create_commands(thead, phead);
-	ft_expander(thead, phead, envar);
+	ft_expander(thead, phead, envar, g_var);
 	return (phead);
 }
