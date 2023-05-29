@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:27:49 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/29 17:37:57 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/29 20:15:03 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	main(int ac, char **av, char **env)
 		tokens = tokenizer(str);
 		commands = parser(tokens, envar, &g_var);
 		concatenate(tokens, commands);
+		get_heredocs(commands, envar);
+		unlink_hd(commands);
 		if (tokens)
 			ft_deltall(tokens);
 		if (commands)

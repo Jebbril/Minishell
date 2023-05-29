@@ -109,6 +109,7 @@ int	main(int ac, char **av, char **env)
 	// 		printf("%d\t%s\tRD_OUTPUT_APND\n", tmp->index, tmp->str);
 	// 	tmp = tmp->next;
 	// }
+	unlink_hd(cmds);
 	if (cmds)
 		ft_delpall(cmds);
 	if (test && test != (t_lexer **)(1))
