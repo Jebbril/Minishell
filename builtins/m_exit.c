@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:47:21 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/29 16:22:13 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/30 11:18:57 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,14 @@ int	m_exit2(char **args, t_global *g_var)
 	{
 		if (args[1][i] < '0' || args[1][i] > '9')
 		{
-			printf("numeric argument required\n");
+			write(2, "numeric argument required\n", 27);
 			g_var->exit_code = 255;
 			exit(255);
 		}
 	}
 	if (args[2])
 	{
-		printf("too many arguments\n");
+		write(2, "too many arguments\n", 20);
 		g_var->exit_code = 1;
 		return (1);
 	}
@@ -92,7 +92,7 @@ int	m_exit(char **args, t_global *g_var)
 	}
 	if (!args[1][0])
 	{
-		printf("numeric argument required\n");
+		write(2, "numeric argument required\n", 27);
 		g_var->exit_code = 255;
 		exit(255);
 	}

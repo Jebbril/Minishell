@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:25:03 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/29 17:28:38 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/30 10:35:22 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int	ft_expand(t_lexer *tnode, t_env **envar, t_global *g_var)
 		{
 			if (tnode->str[i + 1] == '?')
 				expand_exitc(tnode, g_var, i);
-			
 			else if (tnode->str[i + 1] == '_' || ft_isalpha(tnode->str[i + 1]))
 			{
 				j = i++;

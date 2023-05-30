@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 18:32:34 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/15 15:30:27 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/30 11:18:22 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ int	exp_k(char *arg, t_env **envar)
 	i = -1;
 	vnode = *envar;
 	if (arg[i + 1] != '_' && !ft_isalpha(arg[i + 1]))
-		return (printf("not a valid identifier\n"), EXIT_FAILURE);
+		return (write(2, "not a valid identifier\n", 24), EXIT_FAILURE);
 	while (arg[++i])
 		if (arg[i] != '_' && !ft_isalnum(arg[i]))
-			return (printf("not a valid identifier\n"), EXIT_FAILURE);
+			return (write(2, "not a valid identifier\n", 24), EXIT_FAILURE);
 	while (vnode)
 	{
 		if (ft_strncmp(arg, vnode->key, ft_strlen(vnode->key)) == 0
@@ -82,11 +82,11 @@ int	exp_knv(char *arg, t_env **envar)
 	i = -1;
 	if (key[i + 1] != '_' && !ft_isalpha(key[i + 1]))
 		return (free(key), free(value)
-			, printf("not a valid identifier\n"), EXIT_FAILURE);
+			, write(2, "not a valid identifier\n", 24), EXIT_FAILURE);
 	while (key[++i])
 		if (key[i] != '_' && !ft_isalnum(key[i]))
 			return (free(key), free(value)
-				, printf("not a valid identifier\n"), EXIT_FAILURE);
+				, write(2, "not a valid identifier\n", 24), EXIT_FAILURE);
 	put_value(&vnode, key, value, envar);
 	return (EXIT_SUCCESS);
 }

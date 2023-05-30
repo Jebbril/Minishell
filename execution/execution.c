@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   m_env.c                                            :+:      :+:    :+:   */
+/*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 17:03:09 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/30 17:04:59 by orakib           ###   ########.fr       */
+/*   Created: 2023/05/30 09:58:56 by orakib            #+#    #+#             */
+/*   Updated: 2023/05/30 17:05:30 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/builtins.h"
+#include "../include/minishell.h"
 
-int	m_env(t_env **envar)
+void	cmd_execution(t_simple_cmd **cmds, t_env **envar, t_global *g_var)
 {
-	t_env	*vnode;
+	t_simple_cmd	*command;
 
-	vnode = *envar;
-	while (vnode)
+	command = *cmds;
+	if (command->next == NULL)
 	{
-		if (vnode->value)
-			printf("%s=%s\n", vnode->key, vnode->value);
-		vnode = vnode->next;
+		if (command->cmd && check_builtin(command->cmd[0]))
+			if (!get_redirection(command))
+				exec_onebuiltin(command, envar, g_var);
 	}
-	return (EXIT_SUCCESS);
 }

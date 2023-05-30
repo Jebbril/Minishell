@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 15:22:42 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/15 16:21:04 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/30 11:18:41 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ int	unset_var(char *arg, t_env **envar)
 	i = -1;
 	vnode = *envar;
 	if (arg[i + 1] != '_' && !ft_isalpha(arg[i + 1]))
-		return (printf("not a valid identifier\n"), EXIT_FAILURE);
+		return (write(2, "not a valid identifier\n", 24), EXIT_FAILURE);
 	while (arg[++i])
 		if (arg[i] != '_' && !ft_isalnum(arg[i]))
-			return (printf("not a valid identifier\n"), EXIT_FAILURE);
+			return (write(2, "not a valid identifier\n", 24), EXIT_FAILURE);
 	while (vnode)
 	{
 		if (ft_strncmp(arg, vnode->key, ft_strlen(vnode->key)) == 0

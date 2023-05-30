@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 09:01:14 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/29 16:48:22 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/30 11:22:02 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_simple_cmd	**parser(t_lexer **thead, t_env **envar, t_global *g_var)
 	(void)envar;
 	if (!thead)
 	{
-		printf("Error during tokenization\n");
+		write(2, "Error during tokenization\n", 27);
 		return (NULL);
 	}
 	if (thead == (t_lexer **)(1))
@@ -72,7 +72,7 @@ t_simple_cmd	**parser(t_lexer **thead, t_env **envar, t_global *g_var)
 	*phead = NULL;
 	if (syntax_errors(thead, phead))
 	{
-		printf("Syntax error\n");
+		write(2, "Syntax error\n", 14);
 		return (phead);
 	}
 	create_commands(thead, phead);

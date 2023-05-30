@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:53:35 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/29 16:46:42 by orakib           ###   ########.fr       */
+/*   Updated: 2023/05/30 17:04:37 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 # include <stdlib.h>
 # include <stdio.h>
+# include <unistd.h>
 
 typedef enum s_tokens
 {

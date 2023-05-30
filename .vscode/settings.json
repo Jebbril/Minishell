@@ -3,6 +3,8 @@
 		"lexer.h": "c",
 		"parser.h": "c",
 		"__node_handle": "c",
-		"mlx.h": "c"
+		"mlx.h": "c",
+		"minishell.h": "c",
+		"complex": "c"
 	}
 }
