@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 12:58:13 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/01 16:59:02 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/02 17:51:07 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int	get_output(t_simple_cmd *command, t_lexer **tnode)
 		(*tnode) = (*tnode)->next;
 		if ((*tnode)->token == w_space)
 			(*tnode) = (*tnode)->next;
-		command->outfd = open((*tnode)->str, O_WRONLY | O_CREAT, 0666);
+		command->outfd = open((*tnode)->str,
+				O_WRONLY | O_CREAT | O_TRUNC, 0666);
 		if (command->outfd == -1)
 		{
 			command->outfd = 1;
