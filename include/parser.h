@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 08:50:24 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/29 17:10:16 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/01 14:56:57 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct s_simple_cmd
 	t_lexer				**redirections;
 	int					infd;
 	int					outfd;
+	int					instd;
+	int					outstd;
 	struct s_simple_cmd	*prev;
 	struct s_simple_cmd	*next;
 }	t_simple_cmd;

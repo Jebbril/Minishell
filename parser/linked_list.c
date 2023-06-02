@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:04:32 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/24 10:02:51 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/01 15:20:38 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ t_simple_cmd	*ft_newpnode(void)
 	new->redirections = NULL;
 	new->infd = 0;
 	new->outfd = 1;
+	new->instd = 0;
+	new->outstd = 1;
 	new->prev = NULL;
 	new->next = NULL;
 	return (new);

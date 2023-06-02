@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 09:58:56 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/30 17:05:30 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/02 16:39:11 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,21 @@ void	cmd_execution(t_simple_cmd **cmds, t_env **envar, t_global *g_var)
 {
 	t_simple_cmd	*command;
 
+	if (!cmds || !(*cmds) || cmds == (t_simple_cmd **)1)
+		return ;
 	command = *cmds;
 	if (command->next == NULL)
 	{
-		if (command->cmd && check_builtin(command->cmd[0]))
-			if (!get_redirection(command))
+		if (!get_redirection(command))
+		{
+			if (command->cmd && command->cmd[0]
+				&& check_builtin(command->cmd[0]))
+			{
+				swap_fds(command);
 				exec_onebuiltin(command, envar, g_var);
+			}
+		}
+		swap_fds_back(command);
 	}
+	
 }

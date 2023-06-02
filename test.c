@@ -60,6 +60,7 @@ int	main(int ac, char **av, char **env)
 	cmds = parser(test, envar, &g_var);
 	concatenate(test, cmds);
 	get_heredocs(cmds, envar);
+	cmd_execution(cmds, envar, &g_var);
 	if (cmds)
 	{
 		ctmp = *cmds;
@@ -83,6 +84,10 @@ int	main(int ac, char **av, char **env)
 				printf("command : %s\n", ctmp->cmd[i]);
 				i++;
 			}
+			printf("infd : %d\n", ctmp->infd);
+			printf("outfd : %d\n", ctmp->outfd);
+			printf("instd : %d\n", ctmp->instd);
+			printf("outstd : %d\n", ctmp->outstd);
 			ctmp = ctmp->next;
 		}
 	}
