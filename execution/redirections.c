@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 12:58:13 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/02 17:51:07 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/05 12:26:38 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	get_output_appnd(t_simple_cmd *command, t_lexer **tnode)
 	return (EXIT_SUCCESS);
 }
 
-int	get_redirection(t_simple_cmd *command)
+int	get_redirection(t_simple_cmd *command, t_global *g_var)
 {
 	t_lexer	*tnode;
 
@@ -82,11 +82,20 @@ int	get_redirection(t_simple_cmd *command)
 	while (tnode)
 	{
 		if (get_input(command, &tnode))
+		{
+			g_var->exit_code = 1;
 			return (EXIT_FAILURE);
+		}
 		if (get_output(command, &tnode))
+		{
+			g_var->exit_code = 1;
 			return (EXIT_FAILURE);
+		}
 		if (get_output_appnd(command, &tnode))
+		{
+			g_var->exit_code = 1;
 			return (EXIT_FAILURE);
+		}
 		tnode = tnode->next;
 	}
 	return (EXIT_SUCCESS);

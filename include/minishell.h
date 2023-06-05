@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:31:47 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/02 15:32:13 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/05 12:25:11 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	unlink_hd(t_simple_cmd **cmds);
 void	cmd_execution(t_simple_cmd **cmds, t_env **envar, t_global *g_var);
 int		check_builtin(char *arg);
 void	exec_onebuiltin(t_simple_cmd *command, t_env **envar, t_global *g_var);
-int		get_redirection(t_simple_cmd *command);
+int		get_redirection(t_simple_cmd *command, t_global *g_var);
 int		swap_fds(t_simple_cmd *command);
 int		swap_fds_back(t_simple_cmd *command);
 
