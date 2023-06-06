@@ -6,13 +6,11 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:27:49 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/05 19:40:53 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/06 18:59:44 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/minishell.h"
-
-t_global	g_var;
 
 int	main(int ac, char **av, char **env)
 {
@@ -31,10 +29,10 @@ int	main(int ac, char **av, char **env)
 		add_history(str);
 		// str = "echo ss > f";
 		tokens = tokenizer(str);
-		commands = parser(tokens, envar, &g_var);
+		commands = parser(tokens, envar);
 		concatenate(tokens, commands);
 		get_heredocs(commands, envar);
-		cmd_execution(commands, envar, &g_var);
+		cmd_execution(commands, envar);
 		unlink_hd(commands);
 		if (tokens)
 			ft_deltall(tokens);

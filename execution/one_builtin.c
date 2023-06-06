@@ -6,35 +6,35 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:55:14 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/30 17:03:38 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/06 18:58:01 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	exec_onebuiltin(t_simple_cmd *command, t_env **envar, t_global *g_var)
+void	exec_onebuiltin(t_simple_cmd *command, t_env **envar)
 {
 	if (ft_strncmp(command->cmd[0], "cd", ft_strlen(command->cmd[0])) == 0
 		&& ft_strncmp(command->cmd[0], "cd", 2) == 0)
-		g_var->exit_code = m_cd(command->cmd, envar);
+		g_var.exit_code = m_cd(command->cmd, envar);
 	if (ft_strncmp(command->cmd[0], "echo", ft_strlen(command->cmd[0])) == 0
 		&& ft_strncmp(command->cmd[0], "echo", 4) == 0)
-		g_var->exit_code = m_echo(command->cmd);
+		g_var.exit_code = m_echo(command->cmd);
 	if (ft_strncmp(command->cmd[0], "env", ft_strlen(command->cmd[0])) == 0
 		&& ft_strncmp(command->cmd[0], "env", 3) == 0)
-		g_var->exit_code = m_env(envar);
+		g_var.exit_code = m_env(envar);
 	if (ft_strncmp(command->cmd[0], "exit", ft_strlen(command->cmd[0])) == 0
 		&& ft_strncmp(command->cmd[0], "exit", 4) == 0)
-		g_var->exit_code = m_exit(command->cmd, g_var);
+		g_var.exit_code = m_exit(command->cmd);
 	if (ft_strncmp(command->cmd[0], "export", ft_strlen(command->cmd[0])) == 0
 		&& ft_strncmp(command->cmd[0], "export", 5) == 0)
-		g_var->exit_code = m_export(command->cmd, envar);
+		g_var.exit_code = m_export(command->cmd, envar);
 	if (ft_strncmp(command->cmd[0], "pwd", ft_strlen(command->cmd[0])) == 0
 		&& ft_strncmp(command->cmd[0], "pwd", 3) == 0)
-		g_var->exit_code = m_pwd();
+		g_var.exit_code = m_pwd();
 	if (ft_strncmp(command->cmd[0], "unset", ft_strlen(command->cmd[0])) == 0
 		&& ft_strncmp(command->cmd[0], "unset", 5) == 0)
-		g_var->exit_code = m_unset(command->cmd, envar);
+		g_var.exit_code = m_unset(command->cmd, envar);
 }
 
 int	check_builtin(char *arg)

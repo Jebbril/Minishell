@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:47:21 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/05 19:40:26 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/06 18:59:07 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_atoi(const char *str)
 	return (res * sign);
 }
 
-int	m_exit2(char **args, t_global *g_var)
+int	m_exit2(char **args)
 {
 	int	i;
 
@@ -70,37 +70,37 @@ int	m_exit2(char **args, t_global *g_var)
 		if (args[1][i] < '0' || args[1][i] > '9')
 		{
 			write(2, "numeric argument required\n", 27);
-			g_var->exit_code = 255;
+			g_var.exit_code = 255;
 			exit(255);
 		}
 	}
 	if (args[2])
 	{
 		write(2, "too many arguments\n", 20);
-		g_var->exit_code = 1;
+		g_var.exit_code = 1;
 		return (1);
 	}
 	return (0);
 }
 
-int	m_exit(char **args, t_global *g_var)
+int	m_exit(char **args)
 {
 	if (!args[1])
 	{
-		g_var->exit_code = 0;
+		g_var.exit_code = 0;
 		exit(0);
 	}
 	if (!args[1][0])
 	{
 		write(2, "numeric argument required\n", 27);
-		g_var->exit_code = 255;
+		g_var.exit_code = 255;
 		exit(255);
 	}
-	if (m_exit2(args, g_var))
+	if (m_exit2(args))
 		return (1);
-	g_var->exit_code = ft_atoi(args[1]) % 256;
-	if (g_var->exit_code < 0)
-		g_var->exit_code += 256;
+	g_var.exit_code = ft_atoi(args[1]) % 256;
+	if (g_var.exit_code < 0)
+		g_var.exit_code += 256;
 	exit(ft_atoi(args[1]));
 	return (0);
 }

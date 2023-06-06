@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:50:25 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/29 17:34:00 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/06 18:53:37 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	join_all2(char *before, char *after, char *value, t_lexer *tnode)
 	free(joined);
 }
 
-void	expand_exitc(t_lexer *tnode, t_global *g_var, int i)
+void	expand_exitc(t_lexer *tnode, int i)
 {
 	char	*before;
 	char	*after;
@@ -94,7 +94,7 @@ void	expand_exitc(t_lexer *tnode, t_global *g_var, int i)
 
 	before = ft_substr(tnode->str, 0, i);
 	after = ft_substr(tnode->str, i + 2, ft_strlen(tnode->str));
-	value = ft_itoa1(g_var->exit_code);
+	value = ft_itoa1(g_var.exit_code);
 	join_all2(before, after, value, tnode);
 	free(value);
 	free(before);

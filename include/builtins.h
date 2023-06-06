@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:05:09 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/29 16:44:30 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/06 18:58:17 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int		m_unset(char **args, t_env **envar);
 int		m_echo(char **args);
 int		m_pwd(void);
 int		m_cd(char **args, t_env **envar);
-int		m_exit(char **args, t_global *g_var);
+int		m_exit(char **args);
 
 #endif

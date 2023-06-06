@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:53:35 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/05 19:40:40 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/06 18:51:44 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ typedef struct s_global
 {
 	int	exit_code;
 }	t_global;
+
+t_global	g_var;
 
 int		ft_strlen(char *s);
 size_t	ft_strlcpy(char *dst, char *src, size_t dstsize);
