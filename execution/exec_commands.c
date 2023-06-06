@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execution.c                                        :+:      :+:    :+:   */
+/*   exec_commands.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/30 09:58:56 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/05 21:23:22 by orakib           ###   ########.fr       */
+/*   Created: 2023/06/05 16:08:08 by orakib            #+#    #+#             */
+/*   Updated: 2023/06/05 18:38:54 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	cmd_execution(t_simple_cmd **cmds, t_env **envar, t_global *g_var)
+void	exec_first_cmd(t_simple_cmd *command, t_env **envar, t_global *g_var,
+		int *pipe)
+{
+	
+}
+
+void	exec_commands(t_simple_cmd **cmds, t_env **envar, t_global *g_var)
 {
 	t_simple_cmd	*command;
+	int				pipe[2];
 
-	if (!cmds || !(*cmds) || cmds == (t_simple_cmd **)1)
-		return ;
 	command = *cmds;
-	if (command->next == NULL && !get_redirection(command, g_var)
-		&& command->cmd && command->cmd[0]
-		&& check_builtin(command->cmd[0]))
+	while (command)
 	{
-		swap_fds(command);
-		exec_onebuiltin(command, envar, g_var);
-		swap_fds_back(command);
-		return ;
+		if (command->prev == NULL)
+			exec_first_cmd(command, envar, g_var, pipe);
+		else if (command->next == NULL)
+			exec_last_cmd(command, envar, g_var, pipe);
+		else
+			exec_middle_cmd(command, envar, g_var, pipe);
+		command = command->next;
 	}
-	exec_commands(cmds, envar, g_var);
 }

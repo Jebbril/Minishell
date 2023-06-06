@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:31:47 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/05 12:25:11 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/05 16:17:39 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <string.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include <sys/wait.h>
 # include "parser.h"
 # include "concat.h"
 # include "builtins.h"
