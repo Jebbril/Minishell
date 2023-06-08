@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
+/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:27:49 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/08 17:23:47 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/08 19:25:43 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ int	main(int ac, char **av, char **env)
 	while (1)
 	{
 		str = readline("Minishell >");
-		add_history(str);
+		if (!str)
+			exit(g_var.exit_code);
+		if (*str)
+			add_history(str);
 		tokens = tokenizer(str);
 		commands = parser(tokens, envar);
 		concatenate(tokens, commands);

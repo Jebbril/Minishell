@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
+/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 09:58:56 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/08 18:17:51 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/08 19:29:27 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	exec_cmds(t_env **envar, int *fd, t_simple_cmd *command)
 	char			**env;
 	t_fdvar			fdvar;
 	char			*str;
+	pid_t			pid;
 
 	fdvar.fdin = 0;
 	fdvar.fdout = 1;
@@ -56,11 +57,16 @@ void	exec_cmds(t_env **envar, int *fd, t_simple_cmd *command)
 		if (!command->next)
 			fdvar.fdout = 1;
 		str = ft_strjoin2(ft_size1(command->cmd), command->cmd, " ");
-		ch_process(command, str, env, fdvar);
+		pid = ch_process(command, str, env, fdvar);
 		p_process(str, env, fdvar);
 		fdvar.fdin = fd[0];
 		command = command->next;
 	}
+	waitpid(pid, &g_var.exit_code, 0);
+	if (WIFEXITED(g_var.exit_code))
+		g_var.exit_code = WEXITSTATUS(g_var.exit_code);
+	else if (WIFSIGNALED(g_var.exit_code))
+		g_var.exit_code = WTERMSIG(g_var.exit_code) + 128;
 	while (wait(NULL) != -1)
 		;
 }

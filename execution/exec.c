@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
+/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:18:26 by edraidry          #+#    #+#             */
-/*   Updated: 2023/06/08 18:19:27 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/08 19:28:14 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	close_fun(int fd)
 		close(fd);
 }
 
-void	ch_process(t_simple_cmd *command, char *av, char **env, t_fdvar fdvar)
+pid_t	ch_process(t_simple_cmd *command, char *av, char **env, t_fdvar fdvar)
 {
-	int	fd;
+	pid_t	fd;
 
 	fd = fork();
 	if (fd == -1)
@@ -35,14 +35,15 @@ void	ch_process(t_simple_cmd *command, char *av, char **env, t_fdvar fdvar)
 		close_fun(fdvar.var);
 		close_fun(fdvar.fdout);
 		if (get_redirection(command))
-			exit(1);
+			exit(g_var.exit_code);
 		swap_fds(command);
 		if (check_builtin(command->cmd))
 			exec_onebuiltin(command, get_envar(env));
 		else
 			ft_ex(av, env);
-		exit(1);
-	}		
+		exit(g_var.exit_code);
+	}
+	return (fd);
 }
 
 void	p_process(char *av, char **env, t_fdvar fdvar)

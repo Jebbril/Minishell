@@ -5,6 +5,7 @@
 		"__node_handle": "c",
 		"mlx.h": "c",
 		"minishell.h": "c",
-		"complex": "c"
+		"complex": "c",
+		"signal.h": "c"
 	}
 }

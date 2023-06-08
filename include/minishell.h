@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
+/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:31:47 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/08 18:18:43 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/08 19:06:52 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <sys/wait.h>
+# include <signal.h>
 # include "parser.h"
 # include "concat.h"
 # include "builtins.h" 
@@ -50,7 +51,7 @@ void	ft_ex(char *av, char **env);
 char	*find_path(char **env);
 char	*get_path_env(char *cmd, char **env);
 void	ft_error(char *str);
-void	ch_process(t_simple_cmd *command, char *av, char **env, t_fdvar fdvar);
+pid_t	ch_process(t_simple_cmd *command, char *av, char **env, t_fdvar fdvar);
 void	p_process(char *av, char **env, t_fdvar fdvar);
 void	close_fun(int fd);
 int		get_input(t_simple_cmd *command, t_lexer **tnode);
