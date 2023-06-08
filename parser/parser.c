@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 09:01:14 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/06 18:55:16 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/08 17:19:55 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ t_simple_cmd	**parser(t_lexer **thead, t_env **envar)
 	*phead = NULL;
 	if (syntax_errors(thead, phead))
 	{
+		g_var.exit_code = 258;
 		write(2, "Syntax error\n", 14);
 		return (phead);
 	}

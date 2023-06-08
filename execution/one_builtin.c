@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:55:14 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/06 18:58:01 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/08 17:41:08 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,30 @@ void	exec_onebuiltin(t_simple_cmd *command, t_env **envar)
 		g_var.exit_code = m_unset(command->cmd, envar);
 }
 
-int	check_builtin(char *arg)
+int	check_builtin(char **args)
 {
-	if (ft_strncmp(arg, "cd", ft_strlen(arg)) == 0
-		&& ft_strncmp(arg, "cd", 2) == 0)
+	if (!args || !args[0])
+		return (0);
+	if (ft_strncmp(args[0], "cd", ft_strlen(args[0])) == 0
+		&& ft_strncmp(args[0], "cd", 2) == 0)
 		return (1);
-	if (ft_strncmp(arg, "echo", ft_strlen(arg)) == 0
-		&& ft_strncmp(arg, "echo", 4) == 0)
+	if (ft_strncmp(args[0], "echo", ft_strlen(args[0])) == 0
+		&& ft_strncmp(args[0], "echo", 4) == 0)
 		return (1);
-	if (ft_strncmp(arg, "env", ft_strlen(arg)) == 0
-		&& ft_strncmp(arg, "env", 3) == 0)
+	if (ft_strncmp(args[0], "env", ft_strlen(args[0])) == 0
+		&& ft_strncmp(args[0], "env", 3) == 0)
 		return (1);
-	if (ft_strncmp(arg, "exit", ft_strlen(arg)) == 0
-		&& ft_strncmp(arg, "exit", 4) == 0)
+	if (ft_strncmp(args[0], "exit", ft_strlen(args[0])) == 0
+		&& ft_strncmp(args[0], "exit", 4) == 0)
 		return (1);
-	if (ft_strncmp(arg, "export", ft_strlen(arg)) == 0
-		&& ft_strncmp(arg, "export", 5) == 0)
+	if (ft_strncmp(args[0], "export", ft_strlen(args[0])) == 0
+		&& ft_strncmp(args[0], "export", 5) == 0)
 		return (1);
-	if (ft_strncmp(arg, "pwd", ft_strlen(arg)) == 0
-		&& ft_strncmp(arg, "pwd", 3) == 0)
+	if (ft_strncmp(args[0], "pwd", ft_strlen(args[0])) == 0
+		&& ft_strncmp(args[0], "pwd", 3) == 0)
 		return (1);
-	if (ft_strncmp(arg, "unset", ft_strlen(arg)) == 0
-		&& ft_strncmp(arg, "unset", 5) == 0)
+	if (ft_strncmp(args[0], "unset", ft_strlen(args[0])) == 0
+		&& ft_strncmp(args[0], "unset", 5) == 0)
 		return (1);
 	return (0);
 }
