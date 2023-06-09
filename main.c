@@ -6,7 +6,7 @@
 /*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:27:49 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/08 19:25:43 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/06/09 17:37:20 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,14 @@ int	main(int ac, char **av, char **env)
 
 	(void)ac;
 	(void)av;
+	ft_handler();
 	g_var.exit_code = 0;
 	envar = get_envar(env);
 	while (1)
 	{
-		str = readline("Minishell >");
+		g_var.status = ISREADING;
+		str = readline("Minishell> ");
+		g_var.status = ISEXECUTING;
 		if (!str)
 			exit(g_var.exit_code);
 		if (*str)

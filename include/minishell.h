@@ -6,7 +6,7 @@
 /*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:31:47 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/08 19:06:52 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/06/09 17:28:58 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,9 @@ char	*ft_strdup(const char *src);
 char	*ft_strnstr( const char *s1, const char *chr, size_t k);
 char	*ft_strjoin2(int size, char **strs, char *sep);
 int		ft_size1(char **str);
+
+
+void	ft_handler(void);
+void    ft_control_quit(int sig);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:18:26 by edraidry          #+#    #+#             */
-/*   Updated: 2023/06/08 19:28:14 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/06/09 17:36:40 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ pid_t	ch_process(t_simple_cmd *command, char *av, char **env, t_fdvar fdvar)
 		ft_error("fork");
 	if (fd == 0)
 	{
+		signal(SIGQUIT, ft_control_quit);
 		if (dup2 (fdvar.fdin, STDIN_FILENO) == -1)
 			ft_error("fdinput");
 		if (dup2 (fdvar.fdout, STDOUT_FILENO) == -1)

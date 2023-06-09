@@ -6,7 +6,7 @@
 /*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:53:35 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/08 19:28:35 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/06/09 17:14:11 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# define ISREADING 1
+# define ISEXECUTING 2
 
 typedef enum s_tokens
 {
@@ -43,6 +45,7 @@ typedef struct s_lexer
 typedef struct s_global
 {
 	int	exit_code;
+	int	status;
 }	t_global;
 
 t_global	g_var;
