@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:27:49 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/10 13:08:09 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/10 15:22:13 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void	main_2(char *str, t_lexer **tokens, t_simple_cmd **commands,
 	t_env **envar)
 {
+	if (str)
+		add_history(str);
 	tokens = tokenizer(str);
 	commands = parser(tokens, envar);
 	concatenate(tokens, commands);

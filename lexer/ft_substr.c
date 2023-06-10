@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 12:59:02 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/09 15:36:40 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/10 15:26:10 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_strlen(char *str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while (str[i])
 		i++;
 	return (i);
@@ -65,6 +67,8 @@ int	ft_strncmp(char *s1, char *s2, int n)
 	unsigned char	*t2;
 
 	i = 0;
+	if (!s1 || !s2)
+		return (0);
 	t1 = (unsigned char *)s1;
 	t2 = (unsigned char *)s2;
 	while (t1[i] && t2[i] && i < n)

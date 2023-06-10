@@ -6,12 +6,13 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 11:02:46 by orakib            #+#    #+#             */
-/*   Updated: 2023/05/27 20:48:48 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/10 17:06:44 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/builtins.h"
 #include <dirent.h>
+#include <sys/param.h>
 
 int	m_cd(char **args, t_env **envar)
 {
