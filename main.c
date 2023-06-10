@@ -30,7 +30,10 @@ int	main(int ac, char **av, char **env)
 		str = readline("Minishell> ");
 		g_var.status = ISEXECUTING;
 		if (!str)
+		{
+			write(1, "exit\n", 5);
 			exit(g_var.exit_code);
+		}
 		if (*str)
 			add_history(str);
 		tokens = tokenizer(str);

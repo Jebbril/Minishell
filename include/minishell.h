@@ -14,9 +14,9 @@
 
 # define MINISHELL_H
 
+# include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <fcntl.h>
@@ -61,9 +61,7 @@ char	*ft_strdup(const char *src);
 char	*ft_strnstr( const char *s1, const char *chr, size_t k);
 char	*ft_strjoin2(int size, char **strs, char *sep);
 int		ft_size1(char **str);
-
-
 void	ft_handler(void);
-void    ft_control_quit(int sig);
+void	ft_control_quit(int sig);
 
 #endif
