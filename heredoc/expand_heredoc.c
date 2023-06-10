@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../inc/minishell.h"
 
 void	join_all1(char *before, char *after, char *value, char **input)
 {

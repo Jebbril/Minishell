@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/lexer.h"
+#include "../inc/lexer.h"
 
 t_lexer	*handle_sep2(char *input, int *i)
 {

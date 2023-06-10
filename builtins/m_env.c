@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/builtins.h"
+#include "../inc/builtins.h"
 
 int	m_env(t_env **envar)
 {

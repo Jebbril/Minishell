@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../inc/minishell.h"
 
 char	*ft_strnstr( const char *s1, const char *chr, size_t k)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parser.h"
+#include "../inc/parser.h"
 
 char	*ft_strchr(char *s, int c)
 {

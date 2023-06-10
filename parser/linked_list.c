@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parser.h"
+#include "../inc/parser.h"
 
 t_simple_cmd	*ft_newpnode(void)
 {

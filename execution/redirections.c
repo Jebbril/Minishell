@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../inc/minishell.h"
 
 int	get_input(t_simple_cmd *command, t_lexer **tnode)
 {

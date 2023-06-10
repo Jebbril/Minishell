@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/envir.h"
-#include "../include/lexer.h"
+#include "../inc/envir.h"
+#include "../inc/lexer.h"
 
 t_env	**get_envar(char **env)
 {

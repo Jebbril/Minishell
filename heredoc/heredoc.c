@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../inc/minishell.h"
 
 void	open_heredoc2(char *filename, t_env **envar, t_lexer *tnode, int fd)
 {

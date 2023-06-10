@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/builtins.h"
+#include "../inc/builtins.h"
 #include <dirent.h>
 
 int	m_cd(char **args, t_env **envar)

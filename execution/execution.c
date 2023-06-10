@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../inc/minishell.h"
 
 char	**env_to_str(t_env *list)
 {
@@ -71,8 +71,10 @@ void	exec_cmds(t_env **envar, int *fd, t_simple_cmd *command)
 		pid = ch_process(command, str, env, fdvar);
 		p_process(str, env, fdvar);
 		fdvar.fdin = fd[0];
+		free(str);
 		command = command->next;
 	}
+	error(env);
 	wait_func(pid);
 }
 

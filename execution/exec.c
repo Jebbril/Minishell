@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../inc/minishell.h"
 
 void	close_fun(int fd)
 {
@@ -24,14 +24,14 @@ pid_t	ch_process(t_simple_cmd *command, char *av, char **env, t_fdvar fdvar)
 
 	fd = fork();
 	if (fd == -1)
-		ft_error("fork");
+		ft_error("fork", command);
 	if (fd == 0)
 	{
 		signal(SIGQUIT, ft_control_quit);
 		if (dup2 (fdvar.fdin, STDIN_FILENO) == -1)
-			ft_error("fdinput");
+			ft_error("fdinput", command);
 		if (dup2 (fdvar.fdout, STDOUT_FILENO) == -1)
-			ft_error("fdout");
+			ft_error("fdout", command);
 		close_fun(fdvar.fdin);
 		close_fun(fdvar.var);
 		close_fun(fdvar.fdout);
@@ -41,7 +41,7 @@ pid_t	ch_process(t_simple_cmd *command, char *av, char **env, t_fdvar fdvar)
 		if (check_builtin(command->cmd))
 			exec_onebuiltin(command, get_envar(env));
 		else
-			ft_ex(av, env);
+			ft_ex(av, env, command);
 		exit(g_var.exit_code);
 	}
 	return (fd);
@@ -55,9 +55,9 @@ void	p_process(char *av, char **env, t_fdvar fdvar)
 	close_fun(fdvar.fdout);
 }
 
-void	ft_error(char *str)
+void	ft_error(char *str, t_simple_cmd *command)
 {
-	(void)str;
-	perror (" ");
+	if (!str && (!command->redirections || !(*(command->redirections))))
+		write(2, "Command not found\n", 18);
 	exit(EXIT_FAILURE);
 }

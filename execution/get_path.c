@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../inc/minishell.h"
 
 char	*get_path_env(char *cmd, char **path_file)
 {
@@ -38,7 +38,7 @@ char	*get_path_env(char *cmd, char **path_file)
 	return (NULL);
 }
 
-void	ft_ex(char *av, char **env)
+void	ft_ex(char *av, char **env, t_simple_cmd *command)
 {
 	char	**cmd;
 	char	**path;
@@ -62,7 +62,7 @@ void	ft_ex(char *av, char **env)
 		while (cmd[++i])
 			free(cmd[i]);
 		free (cmd);
-		ft_error("execution");
+		ft_error(path_com, command);
 	}
 }
 

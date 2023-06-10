@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/concat.h"
+#include "../inc/concat.h"
 
 void	get_cmds22(t_lexer **tnode, t_simple_cmd **pnode, int i)
 {

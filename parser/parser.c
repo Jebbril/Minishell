@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parser.h"
+#include "../inc/parser.h"
 
 void	create_commands(t_lexer **thead, t_simple_cmd **phead)
 {

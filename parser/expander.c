@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parser.h"
-#include "../include/minishell.h"
+#include "../inc/parser.h"
+#include "../inc/minishell.h"
 
 void	join_all(char *before, char *after, char *value, t_lexer *tnode)
 {

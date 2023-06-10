@@ -47,10 +47,10 @@ int		swap_fds_back(t_simple_cmd *command);
 char	**ft_split(char const *s, char c);//
 char	*ft_strdup(const char *src);//
 char	*ft_strnstr(const char *s1, const char *chr, size_t k);
-void	ft_ex(char *av, char **env);
+void	ft_ex(char *av, char **env, t_simple_cmd *command);
 char	*find_path(char **env);
 char	*get_path_env(char *cmd, char **env);
-void	ft_error(char *str);
+void	ft_error(char *str, t_simple_cmd *command);
 pid_t	ch_process(t_simple_cmd *command, char *av, char **env, t_fdvar fdvar);
 void	p_process(char *av, char **env, t_fdvar fdvar);
 void	close_fun(int fd);
@@ -63,5 +63,6 @@ char	*ft_strjoin2(int size, char **strs, char *sep);
 int		ft_size1(char **str);
 void	ft_handler(void);
 void	ft_control_quit(int sig);
+char	**error(char **tab);
 
 #endif

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parser.h"
+#include "../inc/parser.h"
 
 t_lexer	*ft_cpynode(t_lexer *tnode)
 {

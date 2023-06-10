@@ -25,24 +25,23 @@ SRC = main.c lexer/ft_isspace.c lexer/lexer.c lexer/linked_list.c \
 		heredoc/unlink_hd.c execution/execution.c execution/one_builtin.c \
 		execution/redirections.c execution/swap_fds.c execution/exec.c \
 		execution/ft_split.c execution/ft_strdup.c execution/ft_strjoin2.c \
-		execution/ft_strnstr.c execution/minishell.c signals.c
+		execution/ft_strnstr.c execution/get_path.c signals.c
 
 HEADER = minishell.h
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra -lreadline -L/Users/($USER)/.brew/opt/readline/lib \
-			-I/Users/($USER)/.brew/opt/readline/include
+CFLAGS = -Wall -Werror -Wextra
 
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	$(CC) $(CFLAGS) -L/Users/$(USER)/.brew/opt/readline/lib -lreadline -o $(NAME) $(OBJ)
 	
-%.o: %.c $(HEADER)
-	$(CC) $(CFLAGS) -c $< -o $@
+%.o: %.c
+	$(CC) $(CFLAGS) -I /Users/$(USER)/.brew/opt/readline/include -c $< -o $@
 
 clean:
 	@rm -f $(OBJ)

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/builtins.h"
+#include "../inc/builtins.h"
 
 void	exp_print(t_env **envar)
 {

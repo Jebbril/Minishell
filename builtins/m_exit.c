@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/builtins.h"
+#include "../inc/builtins.h"
 
 static int	ft_spc(const char *str)
 {

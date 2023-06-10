@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parser.h"
+#include "../inc/parser.h"
 
 int	start_end_errors(t_lexer *tnode)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/builtins.h"
+#include "../inc/builtins.h"
 
 int	put_value(t_env **vnode, char *key, char *value, t_env **envar)
 {

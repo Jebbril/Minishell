@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/lexer.h"
+#include "../inc/lexer.h"
 
 int	ft_isspace(char c)
 {

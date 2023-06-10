@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/lexer.h"
+#include "../inc/lexer.h"
 
 t_lexer	*ft_newtnode(char *str, t_tokens token)
 {

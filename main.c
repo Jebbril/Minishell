@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/minishell.h"
+#include "inc/minishell.h"
 
 void	main_2(char *str, t_lexer **tokens, t_simple_cmd **commands,
 	t_env **envar)

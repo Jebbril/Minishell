@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/lexer.h"
+#include "../inc/lexer.h"
 
 int	handle_word(char *input, int *i, t_lexer **thead)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/minishell.h"
+#include "inc/minishell.h"
 
 //export LDFLAGS="-L/Users/edraidry/.brew/opt/readline/lib"
 //export CPPFLAGS="-I/Users/edraidry/.brew/opt/readline/include"

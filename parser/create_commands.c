@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parser.h"
+#include "../inc/parser.h"
 
 int	create_pnodes(t_lexer **thead, t_simple_cmd **phead)
 {

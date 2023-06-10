@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../inc/minishell.h"
 
-static char	**error(char **tab)
+char	**error(char **tab)
 {
 	int	i;
 

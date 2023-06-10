@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/envir.h"
+#include "../inc/envir.h"
 
 t_env	*ft_newvnode(char *key, char *value)
 {
