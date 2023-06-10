@@ -6,7 +6,7 @@
 #    By: orakib <orakib@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/10 10:32:12 by orakib            #+#    #+#              #
-#    Updated: 2023/06/10 15:50:11 by orakib           ###   ########.fr        #
+#    Updated: 2023/06/10 18:14:25 by orakib           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,10 +38,10 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -L/Users/$(USER)/.brew/opt/readline/lib -lreadline -o $(NAME) $(OBJ)
+	@$(CC) $(CFLAGS) -L/Users/$(USER)/.brew/opt/readline/lib -lreadline -o $(NAME) $(OBJ)
 	
 %.o: %.c $(HEADER)
-	$(CC) $(CFLAGS) -I /Users/$(USER)/.brew/opt/readline/include -c $< -o $@
+	@$(CC) $(CFLAGS) -I /Users/$(USER)/.brew/opt/readline/include -c $< -o $@
 
 clean:
 	@rm -f $(OBJ)

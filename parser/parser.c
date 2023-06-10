@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 09:01:14 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/08 17:19:55 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/10 18:28:18 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ t_simple_cmd	**parser(t_lexer **thead, t_env **envar)
 	if (!thead)
 	{
 		write(2, "Error during tokenization\n", 27);
+		g_var.exit_code = 258;
 		return (NULL);
 	}
 	if (thead == (t_lexer **)(1))
