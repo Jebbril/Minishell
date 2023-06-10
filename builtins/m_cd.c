@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 11:02:46 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/10 18:33:34 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/10 18:39:44 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,27 @@ void	change_pwdvar(t_env **envar)
 
 int	change_dir(char *arg, t_env **envar)
 {
-	if (chdir(arg) != 0)
+	t_env	*oldpwd;
+
+	oldpwd = get_envnode(envar, "OLDPWD");
+	if (strncmp(arg, "-", ft_strlen(arg)) == 0)
 	{
-		perror("Minishell: cd");
-		return (EXIT_FAILURE);
+		if (chdir(oldpwd->value) != 0)
+		{
+			perror("Minishell: cd");
+			return (EXIT_FAILURE);
+		}
+		change_pwdvar(envar);
 	}
-	change_pwdvar(envar);
+	else
+	{
+		if (chdir(arg) != 0)
+		{
+			perror("Minishell: cd");
+			return (EXIT_FAILURE);
+		}
+		change_pwdvar(envar);
+	}
 	return (EXIT_SUCCESS);
 }
 
