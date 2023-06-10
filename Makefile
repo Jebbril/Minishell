@@ -6,7 +6,7 @@
 #    By: orakib <orakib@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/10 10:32:12 by orakib            #+#    #+#              #
-#    Updated: 2023/06/10 10:42:56 by orakib           ###   ########.fr        #
+#    Updated: 2023/06/10 12:51:44 by orakib           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRC = main.c lexer/ft_isspace.c lexer/lexer.c lexer/linked_list.c \
 		execution/ft_split.c execution/ft_strdup.c execution/ft_strjoin2.c \
 		execution/ft_strnstr.c execution/get_path.c signals.c
 
-HEADER = minishell.h
+HEADER = inc/minishell.h
 
 CC = cc
 
@@ -40,7 +40,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -L/Users/$(USER)/.brew/opt/readline/lib -lreadline -o $(NAME) $(OBJ)
 	
-%.o: %.c
+%.o: %.c $(HEADER)
 	$(CC) $(CFLAGS) -I /Users/$(USER)/.brew/opt/readline/include -c $< -o $@
 
 clean:
