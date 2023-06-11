@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 12:58:13 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/06 18:57:27 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/11 11:39:51 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	get_input(t_simple_cmd *command, t_lexer **tnode)
 		{
 			command->infd = 0;
 			perror("Minishell");
+			command->redi_fail = 1;
 			return (EXIT_FAILURE);
 		}
 	}
@@ -47,6 +48,7 @@ int	get_output(t_simple_cmd *command, t_lexer **tnode)
 		{
 			command->outfd = 1;
 			perror("Minishell");
+			command->redi_fail = 1;
 			return (EXIT_FAILURE);
 		}
 	}
@@ -68,6 +70,7 @@ int	get_output_appnd(t_simple_cmd *command, t_lexer **tnode)
 		{
 			command->outfd = 1;
 			perror("Minishell");
+			command->redi_fail = 1;
 			return (EXIT_FAILURE);
 		}
 	}

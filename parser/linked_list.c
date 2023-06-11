@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:04:32 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/08 18:06:27 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/11 11:39:05 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_simple_cmd	*ft_newpnode(void)
 	new->outstd = 1;
 	new->prev = NULL;
 	new->next = NULL;
+	new->redi_fail = 0;
 	return (new);
 }
 

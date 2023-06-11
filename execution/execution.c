@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 09:58:56 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/10 10:31:43 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/11 11:42:33 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,7 @@ void	cmd_execution(t_simple_cmd **cmds, t_env **envar)
 		swap_fds_back(command);
 		return ;
 	}
+	if (command->next == NULL && command->redi_fail)
+		return ;
 	exec_cmds(envar, fd, command);
 }
