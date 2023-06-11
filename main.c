@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:27:49 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/11 17:57:53 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/11 18:13:18 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ int	main(int ac, char **av, char **env)
 		str = readline("Minishell> ");
 		g_var.status = ISEXECUTING;
 		main_2(str, tokens, commands, envar);
-		system("leaks minishell");
 	}
 	ft_delvall(envar);
 }
