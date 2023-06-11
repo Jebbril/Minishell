@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:18:26 by edraidry          #+#    #+#             */
-/*   Updated: 2023/06/11 11:41:32 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/11 14:46:54 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ void	ft_error(char *str, t_simple_cmd *command)
 {
 	if (!str && (!command->redirections || !(*(command->redirections))))
 		write(2, "Command not found\n", 18);
-	exit(EXIT_FAILURE);
+	exit(127);
 }

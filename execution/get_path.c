@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_path.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
+/*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 16:41:22 by edraidry          #+#    #+#             */
-/*   Updated: 2023/06/08 16:41:46 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/06/11 15:06:47 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_ex(char *av, char **env, t_simple_cmd *command)
 	path = ft_split(find_path(env), ':');
 	if (!path)
 		(exit(EXIT_FAILURE));
-	cmd = ft_split (av, ' ');
+	cmd = ft_split (av, ';');
 	path_com = get_path_env(cmd[0], path);
 	while (path[++i])
 		free(path[i]);

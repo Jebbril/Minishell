@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:55:14 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/10 18:44:49 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/11 14:30:45 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	exec_onebuiltin(t_simple_cmd *command, t_env **envar)
 		&& ft_strncmp(command->cmd[0], "exit", 4) == 0)
 		g_var.exit_code = m_exit(command->cmd);
 	if (ft_strncmp(command->cmd[0], "export", ft_strlen(command->cmd[0])) == 0
-		&& ft_strncmp(command->cmd[0], "export", 5) == 0)
+		&& ft_strncmp(command->cmd[0], "export", 6) == 0)
 		g_var.exit_code = m_export(command->cmd, envar);
 	if (ft_strncmp(command->cmd[0], "pwd", ft_strlen(command->cmd[0])) == 0
 		&& ft_strncmp(command->cmd[0], "pwd", 3) == 0)
@@ -54,7 +54,7 @@ int	check_builtin(char **args)
 		&& ft_strncmp(args[0], "exit", 4) == 0)
 		return (1);
 	if (ft_strncmp(args[0], "export", ft_strlen(args[0])) == 0
-		&& ft_strncmp(args[0], "export", 5) == 0)
+		&& ft_strncmp(args[0], "export", 6) == 0)
 		return (1);
 	if (ft_strncmp(args[0], "pwd", ft_strlen(args[0])) == 0
 		&& ft_strncmp(args[0], "pwd", 3) == 0)

@@ -6,7 +6,7 @@
 #    By: orakib <orakib@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/10 10:32:12 by orakib            #+#    #+#              #
-#    Updated: 2023/06/10 18:14:25 by orakib           ###   ########.fr        #
+#    Updated: 2023/06/11 17:43:06 by orakib           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC = main.c lexer/ft_isspace.c lexer/lexer.c lexer/linked_list.c \
 		heredoc/unlink_hd.c execution/execution.c execution/one_builtin.c \
 		execution/redirections.c execution/swap_fds.c execution/exec.c \
 		execution/ft_split.c execution/ft_strdup.c execution/ft_strjoin2.c \
-		execution/ft_strnstr.c execution/get_path.c signals.c
+		execution/ft_strnstr.c execution/get_path.c signals.c builtins/m_export_utils2.c
 
 HEADER = inc/minishell.h
 
