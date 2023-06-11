@@ -6,11 +6,13 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:27:49 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/11 18:13:18 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/11 18:32:40 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
+#include <dirent.h>
+#include <sys/param.h>
 
 void	increment_shlvl(t_env **envar)
 {
@@ -49,6 +51,17 @@ void	main_2(char *str, t_lexer **tokens, t_simple_cmd **commands,
 	free(str);
 }
 
+void	min_env(t_env **envar)
+{
+	char	str[MAXPATHLEN];
+
+	ft_addvback(envar, ft_newvnode(ft_substr("PWD", 0, 3),
+			ft_substr(getcwd(str, MAXPATHLEN), 0, ft_strlen(str))));
+	ft_addvback(envar, ft_newvnode(ft_substr("SHLVL", 0, 5), ft_itoa(1)));
+	ft_addvback(envar, ft_newvnode(ft_substr("_", 0, 1),
+			ft_substr("/usr/bin/env", 0, 13)));
+}
+
 int	main(int ac, char **av, char **env)
 {
 	t_simple_cmd	**commands;
@@ -64,6 +77,8 @@ int	main(int ac, char **av, char **env)
 	g_var.exit_code = 0;
 	envar = get_envar(env);
 	increment_shlvl(envar);
+	if (!(*envar))
+		min_env(envar);
 	while (1)
 	{
 		g_var.status = ISREADING;
