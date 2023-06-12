@@ -6,14 +6,12 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 17:06:07 by edraidry          #+#    #+#             */
-/*   Updated: 2023/06/10 10:19:13 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/12 14:47:18 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-//export LDFLAGS="-L/Users/edraidry/.brew/opt/readline/lib"
-//export CPPFLAGS="-I/Users/edraidry/.brew/opt/readline/include"
 static void	ft_control_c(int sig)
 {
 	if (sig != SIGINT)

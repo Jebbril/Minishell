@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 16:41:22 by edraidry          #+#    #+#             */
-/*   Updated: 2023/06/11 15:06:47 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/12 14:05:13 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,8 @@ char	*get_path_env(char *cmd, char **path_file)
 	return (NULL);
 }
 
-void	ft_ex(char *av, char **env, t_simple_cmd *command)
+void	ft_ex(char **env, t_simple_cmd *command)
 {
-	char	**cmd;
 	char	**path;
 	char	*path_com;
 	int		i;
@@ -49,19 +48,15 @@ void	ft_ex(char *av, char **env, t_simple_cmd *command)
 	path = ft_split(find_path(env), ':');
 	if (!path)
 		(exit(EXIT_FAILURE));
-	cmd = ft_split (av, ';');
-	path_com = get_path_env(cmd[0], path);
+	path_com = get_path_env(command->cmd[0], path);
 	while (path[++i])
 		free(path[i]);
 	free (path);
 	i = -1;
-	if (execve(path_com, cmd, env) == -1)
+	if (execve(path_com, command->cmd, env) == -1)
 	{
 		if (path_com)
 			free(path_com);
-		while (cmd[++i])
-			free(cmd[i]);
-		free (cmd);
 		ft_error(path_com, command);
 	}
 }

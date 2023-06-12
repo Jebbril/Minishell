@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
+/*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:31:47 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/09 17:28:58 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/06/12 14:02:32 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ int		swap_fds_back(t_simple_cmd *command);
 char	**ft_split(char const *s, char c);//
 char	*ft_strdup(const char *src);//
 char	*ft_strnstr(const char *s1, const char *chr, size_t k);
-void	ft_ex(char *av, char **env, t_simple_cmd *command);
+void	ft_ex(char **env, t_simple_cmd *command);
 char	*find_path(char **env);
 char	*get_path_env(char *cmd, char **env);
 void	ft_error(char *str, t_simple_cmd *command);
-pid_t	ch_process(t_simple_cmd *command, char *av, char **env, t_fdvar fdvar);
-void	p_process(char *av, char **env, t_fdvar fdvar);
+pid_t	ch_process(t_simple_cmd *command, char **env, t_fdvar fdvar);
+void	p_process(char **env, t_fdvar fdvar);
 void	close_fun(int fd);
 int		get_input(t_simple_cmd *command, t_lexer **tnode);
 int		get_output(t_simple_cmd *command, t_lexer **tnode);

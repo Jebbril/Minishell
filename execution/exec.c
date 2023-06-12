@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:18:26 by edraidry          #+#    #+#             */
-/*   Updated: 2023/06/11 14:46:54 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/12 14:02:42 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	close_fun(int fd)
 		close(fd);
 }
 
-pid_t	ch_process(t_simple_cmd *command, char *av, char **env, t_fdvar fdvar)
+pid_t	ch_process(t_simple_cmd *command, char **env, t_fdvar fdvar)
 {
 	pid_t	fd;
 
@@ -41,15 +41,14 @@ pid_t	ch_process(t_simple_cmd *command, char *av, char **env, t_fdvar fdvar)
 		if (check_builtin(command->cmd))
 			exec_onebuiltin(command, get_envar(env));
 		else
-			ft_ex(av, env, command);
+			ft_ex(env, command);
 		exit(g_var.exit_code);
 	}
 	return (fd);
 }
 
-void	p_process(char *av, char **env, t_fdvar fdvar)
+void	p_process(char **env, t_fdvar fdvar)
 {
-	(void)av;
 	(void)env;
 	close_fun(fdvar.fdin);
 	close_fun(fdvar.fdout);
