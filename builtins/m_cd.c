@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 11:02:46 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/11 19:45:47 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/12 19:48:28 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int	change_pwdvar(t_env **envar)
 	oldpwd->value = pwd->value;
 	if (!getcwd(str, MAXPATHLEN))
 	{
-		free (str);
+		free(str);
+		perror("");
 		return (1);
 	}
 	pwd->value = str;
