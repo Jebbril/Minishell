@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 17:06:07 by edraidry          #+#    #+#             */
-/*   Updated: 2023/06/12 14:47:18 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/14 12:52:06 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	ft_control_c(int sig)
 		rl_on_new_line();
 		rl_redisplay();
 	}
-	else if (g_var.status == ISHEREDOC)//here
+	else if (g_var.status == ISHEREDOC)
 	{
 		rl_replace_line("", 0);
 		write(1, "\n", 1);

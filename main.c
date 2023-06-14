@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:27:49 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/12 19:48:40 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/14 12:51:54 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	main_2(char *str, t_lexer **tokens, t_simple_cmd **commands,
 	tokens = tokenizer(str);
 	commands = parser(tokens, envar);
 	concatenate(tokens, commands);
-	if (get_heredocs(commands, envar) == EXIT_FAILURE)//added if 
-		return ;//here
+	if (get_heredocs(commands, envar) == EXIT_FAILURE)
+		return ;
 	cmd_execution(commands, envar);
 	unlink_hd(commands);
 	if (tokens)

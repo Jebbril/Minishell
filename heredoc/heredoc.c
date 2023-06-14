@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 12:49:37 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/12 14:47:26 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/14 12:52:42 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	nodes_loop(t_simple_cmd *pnode, int *i, t_env **envar)
 	t_lexer	*tnode;
 
 	tnode = *(pnode->redirections);
-	while (tnode && g_var.status != ISCONTROLC)// hrer
+	while (tnode && g_var.status != ISCONTROLC)
 	{
 		if (tnode->token == here_doc)
 		{
@@ -88,12 +88,12 @@ int	get_heredocs(t_simple_cmd **cmds, t_env **envar)
 {
 	t_simple_cmd	*pnode;
 	int				i;
-	int				fd;//here
+	int				fd;
 
 	if (!cmds)
 		return (EXIT_SUCCESS);
-	g_var.status = ISHEREDOC;//here
-	fd = dup(0);//here duplicate stdin
+	g_var.status = ISHEREDOC;
+	fd = dup(0);
 	pnode = *cmds;
 	i = 1000000;
 	while (pnode)
@@ -102,11 +102,10 @@ int	get_heredocs(t_simple_cmd **cmds, t_env **envar)
 			return (EXIT_FAILURE);
 		pnode = pnode->next;
 	}
-	dup2(fd, 0);//here
-	close(fd);//here
-	if (g_var.status == ISCONTROLC)//here
-		return (EXIT_FAILURE);//here
-	g_var.status = ISEXECUTING;//here
-	//exit(0);
+	dup2(fd, 0);
+	close(fd);
+	if (g_var.status == ISCONTROLC)
+		return (EXIT_FAILURE);
+	g_var.status = ISEXECUTING;
 	return (EXIT_SUCCESS);
 }
