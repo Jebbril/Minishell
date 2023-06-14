@@ -6,11 +6,37 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 09:58:56 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/12 14:05:25 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/14 18:55:18 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
+
+char	*ft_strjoin4(char *s1, char *s2)
+{
+	int		i;
+	int		j;
+	char	*str;
+
+	i = -1;
+	j = -1;
+	if (!s1)
+		s1 = "";
+	if (!s2)
+		s2 = "";
+	str = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	while (s1[++i])
+		str[i] = s1[i];
+	while (s2[++j])
+	{
+		str[i] = s2[j];
+		i++;
+	}
+	str[i] = 0;
+	return (str);
+}
 
 char	**env_to_str(t_env *list)
 {
@@ -31,7 +57,7 @@ char	**env_to_str(t_env *list)
 	while (list)
 	{
 		str = ft_strjoin(list->key, "=");
-		env[i] = ft_strjoin(str, list->value);
+		env[i] = ft_strjoin4(str, list->value);
 		free(str);
 		list = list->next;
 		i++;

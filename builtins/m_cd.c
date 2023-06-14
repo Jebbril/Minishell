@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   m_cd.c                                             :+:      :+:    :+:   */
+/*   m_cd2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 11:02:46 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/12 19:48:28 by orakib           ###   ########.fr       */
+/*   Created: 2023/06/14 18:09:51 by orakib            #+#    #+#             */
+/*   Updated: 2023/06/14 21:36:16 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,88 +21,84 @@ t_env	*get_envnode(t_env **envar, char *str)
 	vnode = *envar;
 	while (vnode)
 	{
-		if (ft_strncmp(str, vnode->key, 4) == 0
-			&& ft_strncmp(str, vnode->key, ft_strlen(vnode->key)) == 0)
-			return (vnode);
+		if (vnode)
+		{
+			if (ft_strncmp(str, vnode->key, 4) == 0
+				&& ft_strncmp(str, vnode->key, ft_strlen(vnode->key)) == 0)
+				return (vnode);
+		}
 		vnode = vnode->next;
 	}
 	return (NULL);
 }
 
-int	change_pwdvar(t_env **envar)
+int	specific_ch(char *str, t_env **envar)
 {
-	t_env	*pwd;
-	t_env	*oldpwd;
-	char	*str;
+	t_env	*vnode;
 
-	str = malloc(MAXPATHLEN + 1);
-	if (!str)
+	vnode = get_envnode(envar, str);
+	if (!vnode || !vnode->value)
 	{
-		perror("Minishell");
+		ft_putendl_fd(str, 2);
+		ft_putendl_fd(" is not set\n", 2);
 		return (1);
 	}
-	oldpwd = get_envnode(envar, "OLDPWD");
-	pwd = get_envnode(envar, "PWD");
-	if (!oldpwd || !pwd)
-		return (write(2, "cd: OLDPWD not set\n", 20), 1);
-	free(oldpwd->value);
-	oldpwd->value = pwd->value;
-	if (!getcwd(str, MAXPATHLEN))
+	if (chdir(vnode->value) != 0)
 	{
-		free(str);
 		perror("");
 		return (1);
 	}
-	pwd->value = str;
+	if (ft_strncmp(str, "OLDPWD", 7) == 0)
+	{
+		ft_putendl_fd(vnode->value, 1);
+		ft_putendl_fd("\n", 1);
+	}
 	return (0);
 }
 
 int	change_dir(char *arg, t_env **envar)
 {
+	(void)envar;
+	if (chdir(arg) != 0)
+	{
+		perror("");
+		return (1);
+	}
+	return (0);
+}
+
+void	update_vars(t_env **envar)
+{
+	t_env	*pwd;
 	t_env	*oldpwd;
 
-	oldpwd = get_envnode(envar, "OLDPWD");
-	if (!oldpwd)
-		return (write(2, "cd: OLDPWD not set\n", 20), 1);
-	if (strncmp(arg, "-", ft_strlen(arg)) == 0)
-	{
-		if (chdir(oldpwd->value) != 0)
-		{
-			perror("Minishell: cd");
-			return (EXIT_FAILURE);
-		}
-		return (change_pwdvar(envar));
-	}
+	ft_delvone(envar, get_envnode(envar, "OLDPWD"));
+	pwd = get_envnode(envar, "PWD");
+	oldpwd = ft_newvnode(ft_strdup("OLDPWD"), NULL);
+	ft_addvback(envar, oldpwd);
+	if (!pwd)
+		oldpwd->value = ft_strdup("");
 	else
 	{
-		if (chdir(arg) != 0)
-		{
-			perror("Minishell: cd");
-			return (EXIT_FAILURE);
-		}
-		return (change_pwdvar(envar));
+		oldpwd->value = pwd->value;
+		pwd->value = getcwd(NULL, 0);
 	}
-	return (EXIT_SUCCESS);
 }
 
 int	m_cd(char **args, t_env **envar)
 {
-	t_env	*vnode;
+	int	ret;
 
-	vnode = *(envar);
+	ret = 0;
 	if (!args[1])
-	{
-		vnode = get_envnode(envar, "HOME");
-		if (chdir(vnode->value) != 0)
-		{
-			perror("Minishell: cd");
-			return (EXIT_FAILURE);
-		}
-		return (change_pwdvar(envar));
-	}
-	if (!args[1][0])
-		return (EXIT_SUCCESS);
-	if (args[1])
-		return (change_dir(args[1], envar));
-	return (EXIT_SUCCESS);
+		ret = specific_ch("HOME", envar);
+	else if (!args[1][0])
+		;
+	else if (ft_strncmp(args[1], "-", 1) == 0)
+		ret = specific_ch("OLDPWD", envar);
+	else
+		ret = change_dir(args[1], envar);
+	if (ret == 0)
+		update_vars(envar);
+	return (ret);
 }

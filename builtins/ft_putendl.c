@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   m_pwd.c                                            :+:      :+:    :+:   */
+/*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 10:39:45 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/14 21:34:20 by orakib           ###   ########.fr       */
+/*   Created: 2023/06/14 20:29:57 by orakib            #+#    #+#             */
+/*   Updated: 2023/06/14 20:36:06 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/builtins.h"
-#include <sys/param.h>
 
-int	m_pwd(t_env **envar)
+void	ft_putchar_fd(char c, int fd)
 {
-	char	str[MAXPATHLEN];
+	write(fd, &c, 1);
+}
 
-	(void)envar;
-	if (!getcwd(str, MAXPATHLEN))
+void	ft_putendl_fd(char *s, int fd)
+{
+	int	i;
+
+	if (!s)
+		return ;
+	i = 0;
+	while (s[i])
 	{
-		perror("");
-		return (1);
+		ft_putchar_fd(s[i], fd);
+		i++;
 	}
-	printf("%s\n", str);
-	return (EXIT_SUCCESS);
 }

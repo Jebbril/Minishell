@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 16:41:22 by edraidry          #+#    #+#             */
-/*   Updated: 2023/06/12 14:05:13 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/14 17:56:17 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*get_path_env(char *cmd, char **path_file)
 	if (access(cmd, F_OK) == 0 && ft_strchr(cmd, '/'))
 		return (ft_strdup(cmd));
 	if (!cmd[0])
-		write(1, "erron commond not found", 24);
+		write(2, "error command not found\n", 25);
 	else if (access(cmd, F_OK) != 0 && ft_strchr(cmd, '/'))
 		return (NULL);
 	while (*path_file)

@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 09:23:13 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/11 17:20:54 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/14 20:12:59 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ int	m_echo(char **args)
 	m_echo2(args, &i, &j);
 	while (args[i])
 	{
-		printf("%s", args[i]);
+		ft_putendl_fd(args[i], 1);
 		if (args[i + 1])
-			printf(" ");
+			ft_putendl_fd(" ", 1);
 		i++;
 	}
 	if (j == 0)

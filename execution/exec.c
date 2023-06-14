@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:18:26 by edraidry          #+#    #+#             */
-/*   Updated: 2023/06/12 14:02:42 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/14 17:56:36 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ void	p_process(char **env, t_fdvar fdvar)
 void	ft_error(char *str, t_simple_cmd *command)
 {
 	if (!str && (!command->redirections || !(*(command->redirections))))
-		write(2, "Command not found\n", 18);
+		write(2, "Command not Found\n", 19);
 	exit(127);
 }

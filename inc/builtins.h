@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:05:09 by orakib            #+#    #+#             */
-/*   Updated: 2023/06/11 17:42:08 by orakib           ###   ########.fr       */
+/*   Updated: 2023/06/14 20:11:34 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int		m_exit(char **args);
 t_env	*get_envnode(t_env **envar, char *str);
 int		ft_atoi(const char *str);
 int		exp_knv2(char *arg, t_env **envar);
+void	ft_putendl_fd(char *s, int fd);
 
 #endif
