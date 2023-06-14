@@ -24,6 +24,13 @@ static void	ft_control_c(int sig)
 		rl_on_new_line();
 		rl_redisplay();
 	}
+	else if (g_var.status == ISHEREDOC)//here
+	{
+		rl_replace_line("", 0);
+		write(1, "\n", 1);
+		close(0);
+		g_var.status = ISCONTROLC;
+	}
 }
 
 void	ft_control_quit(int sig)

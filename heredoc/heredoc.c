@@ -69,7 +69,7 @@ int	nodes_loop(t_simple_cmd *pnode, int *i, t_env **envar)
 	t_lexer	*tnode;
 
 	tnode = *(pnode->redirections);
-	while (tnode)
+	while (tnode && g_var.status != ISCONTROLC)// hrer
 	{
 		if (tnode->token == here_doc)
 		{
@@ -88,9 +88,12 @@ int	get_heredocs(t_simple_cmd **cmds, t_env **envar)
 {
 	t_simple_cmd	*pnode;
 	int				i;
+	int				fd;//here
 
 	if (!cmds)
 		return (EXIT_SUCCESS);
+	g_var.status = ISHEREDOC;//here
+	fd = dup(0);//here duplicate stdin
 	pnode = *cmds;
 	i = 1000000;
 	while (pnode)
@@ -99,5 +102,11 @@ int	get_heredocs(t_simple_cmd **cmds, t_env **envar)
 			return (EXIT_FAILURE);
 		pnode = pnode->next;
 	}
+	dup2(fd, 0);//here
+	close(fd);//here
+	if (g_var.status == ISCONTROLC)//here
+		return (EXIT_FAILURE);//here
+	g_var.status = ISEXECUTING;//here
+	//exit(0);
 	return (EXIT_SUCCESS);
 }

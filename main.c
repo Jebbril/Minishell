@@ -41,7 +41,8 @@ void	main_2(char *str, t_lexer **tokens, t_simple_cmd **commands,
 	tokens = tokenizer(str);
 	commands = parser(tokens, envar);
 	concatenate(tokens, commands);
-	get_heredocs(commands, envar);
+	if (get_heredocs(commands, envar) == EXIT_FAILURE)//added if 
+		return ;//here
 	cmd_execution(commands, envar);
 	unlink_hd(commands);
 	if (tokens)

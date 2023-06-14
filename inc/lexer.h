@@ -20,6 +20,7 @@
 # define ISREADING 1
 # define ISEXECUTING 2
 # define ISHEREDOC 3
+# define ISCONTROLC 4 //here
 
 typedef enum s_tokens
 {
